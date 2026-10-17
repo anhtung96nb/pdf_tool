@@ -1,0 +1,179 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Tungdv96\\CountFile2\\CountFile2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|d:\\tungdv96\\countfile2\\countfile2\\countfile2\\frmxulyocr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\frmxulyocr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\frmxulyocr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\frmxulyocr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\frmxulyocr.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\frmxulyocr.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SoHOa\\CountFile2\\CountFile2\\packages\\EPPlus.8.0.7\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\57ef8ebdea5230dbfa90b3b439167f804abf297f1881edfdb7c09c3d9136e0d3\\NativeMethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|D:\\Tungdv96\\CountFile2\\CountFile2\\countfile2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B7C3D13C-FA28-4887-883D-9B12280CAA87}|CountFile2\\CountFile2.csproj|solutionrelative:countfile2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmXuLyOCR.cs",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.cs",
+              "RelativeDocumentMoniker": "CountFile2\\frmXuLyOCR.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.cs",
+              "RelativeToolTip": "CountFile2\\frmXuLyOCR.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4DAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T06:16:44.107Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": ".NETFramework,Version=v4.8.AssemblyAttributes.cs",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+              "RelativeDocumentMoniker": "CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+              "RelativeToolTip": "CountFile2\\obj\\Debug\\.NETFramework,Version=v4.8.AssemblyAttributes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T16:47:01.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "readme.txt",
+              "DocumentMoniker": "D:\\SoHOa\\CountFile2\\CountFile2\\packages\\EPPlus.8.0.7\\readme.txt",
+              "RelativeDocumentMoniker": "..\\..\\..\\SoHOa\\CountFile2\\CountFile2\\packages\\EPPlus.8.0.7\\readme.txt",
+              "ToolTip": "D:\\SoHOa\\CountFile2\\CountFile2\\packages\\EPPlus.8.0.7\\readme.txt",
+              "RelativeToolTip": "..\\..\\..\\SoHOa\\CountFile2\\CountFile2\\packages\\EPPlus.8.0.7\\readme.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-07-04T16:58:58.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NativeMethods.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\57ef8ebdea5230dbfa90b3b439167f804abf297f1881edfdb7c09c3d9136e0d3\\NativeMethods.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\57ef8ebdea5230dbfa90b3b439167f804abf297f1881edfdb7c09c3d9136e0d3\\NativeMethods.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T17:23:14.479Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmXuLyOCR.Designer.cs",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.Designer.cs",
+              "RelativeDocumentMoniker": "CountFile2\\frmXuLyOCR.Designer.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.Designer.cs",
+              "RelativeToolTip": "CountFile2\\frmXuLyOCR.Designer.cs",
+              "ViewState": "AgIAAGUBAAAAAAAAAAAAAHQBAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T11:56:02.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmXuLyOCR.cs [Design]",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.cs",
+              "RelativeDocumentMoniker": "CountFile2\\frmXuLyOCR.cs",
+              "ToolTip": "D:\\SoHOa\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\SoHOa\\CountFile2\\CountFile2\\CountFile2\\frmXuLyOCR.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:37:19.216Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\packages.config",
+              "RelativeDocumentMoniker": "CountFile2\\packages.config",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\packages.config",
+              "RelativeToolTip": "CountFile2\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-07-04T16:54:04.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Program.cs",
+              "RelativeDocumentMoniker": "CountFile2\\Program.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Program.cs",
+              "RelativeToolTip": "CountFile2\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvxIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:40:53.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Form1.cs",
+              "RelativeDocumentMoniker": "CountFile2\\Form1.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Form1.cs",
+              "RelativeToolTip": "CountFile2\\Form1.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAAAQwM0AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:33:34.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Form1.cs",
+              "RelativeDocumentMoniker": "CountFile2\\Form1.cs",
+              "ToolTip": "D:\\Tungdv96\\CountFile2\\CountFile2\\CountFile2\\Form1.cs [Design]",
+              "RelativeToolTip": "CountFile2\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:33:17.914Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

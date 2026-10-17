@@ -1,0 +1,10 @@
+﻿FileNguon,FileDich,TrangGoc,TrangDich,HanhDong,GocNghieng,DoTinCay,DPIAnh,TuongPhan,DoSacNet,OCR,ChatLuongThap,TrangThai,LyDo
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","1","1","Giữ","0","0","","224","29302.2100502513","","False","Đã phân tích","; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","2","0","Xóa trang trắng","0","0","","0","0","","False","Đã phân tích","; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","3","2","Giữ","0","0","","5","0","","False","Đã phân tích","Trang ít nội dung hoặc nền nhiễu: giữ lại để kiểm tra.; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","4","3","Giữ","0","0","","196","31427.4353741497","","False","Đã phân tích","Trang ít nội dung hoặc nền nhiễu: giữ lại để kiểm tra.; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","5","4","Giữ","0","0","","225","27476.7479852158","","False","Đã phân tích","; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","6","5","Giữ","0","0","50.0237529691211","204","18740.9129793266","","True","Đã phân tích","Độ phân giải ảnh thấp: 50 DPI; Chưa kiểm tra hướng 90/180/270 độ; bật OCR để kiểm tra.; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","7","6","Giữ","0","0","149.985748218527","29","319.961223178143","","True","Đã phân tích","Độ phân giải ảnh thấp: 150 DPI; Tương phản thấp / chữ mờ; Chưa kiểm tra hướng 90/180/270 độ; bật OCR để kiểm tra.; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","8","7","Giữ","0","0","149.985748218527","73","5.37567779588107","","True","Đã phân tích","Độ phân giải ảnh thấp: 150 DPI; Ảnh có dấu hiệu mờ (cần đối chiếu); Chưa kiểm tra hướng 90/180/270 độ; bật OCR để kiểm tra.; "
+"D:\Tungdv96\CountFile2\CountFile2\tmp\pdf-cleanup-tests\diagnostic-run2\sample.pdf","","9","8","Giữ","0","0","","0","0","","False","Đã phân tích","Có chú thích/form: giữ nguyên hình học trang để bảo toàn tương tác.; "

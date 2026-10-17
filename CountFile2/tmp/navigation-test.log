@@ -1,0 +1,123 @@
+
+Unhandled Exception: System.InvalidOperationException: Cross-thread operation not valid: Control '' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.RecreateHandleCore()
+   at System.Windows.Forms.ProgressBar.set_Style(ProgressBarStyle value)
+   at CountFile2.frmChuyenDoiFile.<>c__DisplayClass33_0.<StartConversion>b__0(ConversionProgress item) in D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmChuyenDoiFile.cs:line 232
+   at System.Progress`1.InvokeHandlers(Object state)
+   at System.Threading.QueueUserWorkItemCallback.WaitCallback_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback()
+
+==== C stack trace ===============================
+
+	RaiseException [0x753EAED4+100]
+	CorDllMainForThunk [0x7244B6A2+34082]
+	CorDllMainForThunk [0x7244AE65+31973]
+	(No symbol) [0x6E018D1E]
+	(No symbol) [0x6D5CEC99]
+	(No symbol) [0x6E0152C3]
+	(No symbol) [0x07CE93C6]
+	(No symbol) [0x71A56928]
+	(No symbol) [0x71301244]
+	(No symbol) [0x71258D97]
+	(No symbol) [0x71301295]
+	(No symbol) [0x712F232D]
+	(No symbol) [0x712F218B]
+	(No symbol) [0x722DE529]
+	(No symbol) [0x722DF1F7]
+	DllGetClassObjectInternal [0x72432E93+159827]
+	(No symbol) [0x722E3B84]
+	(No symbol) [0x722E3BFB]
+	(No symbol) [0x722E3CAB]
+	(No symbol) [0x722E3D27]
+	DllGetClassObjectInternal [0x72432E1D+159709]
+	DllGetClassObjectInternal [0x72431C5C+155164]
+	DllGetClassObjectInternal [0x72431D77+155447]
+	CreateAssemblyNameObject [0x7231D494+43284]
+	BaseThreadInitThunk [0x766C5D49+25]
+	RtlInitializeExceptionChain [0x773CE1FB+107]
+	RtlGetAppContainerNamedObjectPath [0x773CE181+561]
+
+Unhandled Exception: System.InvalidOperationException: Cross-thread operation not valid: Control '' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.DataGridView.FlushDisplayedChanged()
+   at System.Windows.Forms.DataGridView.PerformLayoutPrivate(Boolean useRowShortcut, Boolean computeVisibleRows, Boolean invalidInAdjustFillingColumns, Boolean repositionEditingControl)
+   at System.Windows.Forms.DataGridView.ResetUIState(Boolean useRowShortcut, Boolean computeVisibleRows)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged_PreNotification(CollectionChangeAction cca, Int32 rowIndex, Int32 rowCount, DataGridViewRow& dataGridViewRow, Boolean changeIsInsertion)
+   at System.Windows.Forms.DataGridViewRowCollection.OnCollectionChanged(CollectionChangeEventArgs e, Int32 rowIndex, Int32 rowCount)
+   at System.Windows.Forms.DataGridViewRowCollection.AddInternal(Boolean newRow, Object[] values)
+   at System.Windows.Forms.DataGridViewRowCollection.Add(Object[] values)
+   at CountFile2.frmChuyenDoiFile.ShowProgress(ConversionProgress item) in D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmChuyenDoiFile.cs:line 164
+   at CountFile2.frmChuyenDoiFile.<>c__DisplayClass33_0.<StartConversion>b__0(ConversionProgress item) in D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmChuyenDoiFile.cs:line 232
+   at System.Progress`1.InvokeHandlers(Object state)
+   at System.Threading.QueueUserWorkItemCallback.WaitCallback_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback()
+
+Unhandled Exception: System.Exception: PDF mode 1: Đang quét danh sách file…
+   at WinFormsNavigationTests.Assert(Boolean condition, String message)
+   at WinFormsNavigationTests.Main(String[] args)
+
+==== C stack trace ===============================
+
+	RaiseException [0x753EAED4+100]
+	CorDllMainForThunk [0x7244B6A2+34082]
+	CorDllMainForThunk [0x7244AE65+31973]
+	(No symbol) [0x6E018D1E]
+	(No symbol) [0x6DCBB59F]
+	(No symbol) [0x6DCE07A7]
+	(No symbol) [0x6DCF0574]
+	(No symbol) [0x6DD14CB2]
+	(No symbol) [0x6DD14721]
+	(No symbol) [0x6DD1170E]
+	(No symbol) [0x6DD1177D]
+	(No symbol) [0x07CE9586]
+	(No symbol) [0x07CE93D5]
+	(No symbol) [0x71A56928]
+	(No symbol) [0x71301244]
+	(No symbol) [0x71258D97]
+	(No symbol) [0x71301295]
+	(No symbol) [0x712F232D]
+	(No symbol) [0x712F218B]
+	(No symbol) [0x722DE529]
+	(No symbol) [0x722DF1F7]
+	DllGetClassObjectInternal [0x72432E93+159827]
+	(No symbol) [0x722E3B84]
+	(No symbol) [0x722E3BFB]
+	(No symbol) [0x722E3CAB]
+	(No symbol) [0x722E3D27]
+	DllGetClassObjectInternal [0x72432E1D+159709]
+	DllGetClassObjectInternal [0x72431C5C+155164]
+	DllGetClassObjectInternal [0x72431D77+155447]
+	CreateAssemblyNameObject [0x7231D494+43284]
+	BaseThreadInitThunk [0x766C5D49+25]
+	RtlInitializeExceptionChain [0x773CE1FB+107]
+	RtlGetAppContainerNamedObjectPath [0x773CE181+561]
+
+==== C stack trace ===============================
+
+	RaiseException [0x753EAED4+100]
+	CorDllMainForThunk [0x7244B6A2+34082]
+	CorDllMainForThunk [0x7244AE65+31973]
+	(No symbol) [0x07D6CC64]
+	(No symbol) [0x722D2556]
+	(No symbol) [0x722DE529]
+	(No symbol) [0x722DF1F7]
+	PreBindAssemblyEx [0x7236D530+64176]
+	PreBindAssemblyEx [0x7236D631+64433]
+	PreBindAssemblyEx [0x7236D4A6+64038]
+	PreBindAssemblyEx [0x7236D8B4+65076]
+	PreBindAssemblyEx [0x7236D7FA+64890]
+	CorExeMain [0x723BE1FC+28]
+	CorExeMain [0x7456A38E+94]
+	DllUnregisterServer [0x74DCFBAE+334]
+	CorExeMain [0x74DD5788+8]
+	RtlInitializeExceptionChain [0x773CE1FB+107]
+	RtlGetAppContainerNamedObjectPath [0x773CE181+561]
