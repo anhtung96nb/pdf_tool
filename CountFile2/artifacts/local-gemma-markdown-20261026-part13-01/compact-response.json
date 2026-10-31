@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"fields\": {\n    \"issuer\": {\n      \"value\": \"Cơ quan ban hành\",\n      \"evidence_ids\": []\n    },\n    \"issue_date\": {\n      \"value\": \"2026-03-10_141605_Part13\",\n      \"evidence_ids\": []\n    },\n    \"document_number_full\": {\n      \"value\": \"12\",\n      \"evidence_ids\": []\n    },\n    \"title\": {\n      \"value\": \"Bản khai\",\n      \"evidence_ids\": []\n    },\n    \"subject\": {\n      \"value\": \"Để giải quyết chế độ ưu đãi khi người có công từ trần\",\n      \"evidence_ids\": []\n    },\n    \"signer_name\": {\n      \"value\": \"Trưng Huân\",\n      \"evidence_ids\": []\n    },\n    \"signer_title\": {\n      \"value\": \"Nam/Nữ\",\n      \"evidence_ids\": []\n    }\n  }\n}"
+      }
+    }
+  ],
+  "created": 1793034294,
+  "model": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "system_fingerprint": "b11706-f74e2fa6a",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 253,
+    "prompt_tokens": 2790,
+    "total_tokens": 3043,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "id": "chatcmpl-qG5xsTNwx4qyQZfv2FWqWffKZPgwVCbt",
+  "timings": {
+    "cache_n": 0,
+    "prompt_n": 2790,
+    "prompt_ms": 14876.106,
+    "prompt_per_token_ms": 5.331937634408602,
+    "prompt_per_second": 187.54908038434252,
+    "predicted_n": 253,
+    "predicted_ms": 13276.195,
+    "predicted_per_token_ms": 52.68331349206349,
+    "predicted_per_second": 18.981342169198328
+  }
+}

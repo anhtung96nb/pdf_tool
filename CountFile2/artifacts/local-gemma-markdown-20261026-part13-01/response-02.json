@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"document_groups\": [\n    {\n      \"id\": \"1\",\n      \"start_page\": 1,\n      \"end_page\": 2,\n      \"is_primary\": true\n    },\n    {\n      \"id\": \"2\",\n      \"start_page\": 3,\n      \"end_page\": 4,\n      \"is_primary\": false\n    }\n  ],\n  \"fields\": [\n    {\n      \"key\": \"issuer\",\n      \"value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"raw_value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"state\": \"missing\",\n      \"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"parent_organization\",\n      \"value\": \"Độc lập \\\"- Tự do \\\"- Hạnh phúc\",\n      \"raw_value\": \"Độc lập \\\"- Tự do \\\"- Hạnh phúc\",\n      \"state\": \"missing\",\n      \"group_id\": \"2\",\"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"issue_date\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_number_full\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_number\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_symbol\",\n      \"value\": \"null\",\n      \"raw_value\": \"null\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_type\",\n      \"value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"raw_value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"title\",\n      \"value\": \"Trạng thái: Cần kiểm tra\",\n      \"raw_value\": \"Trạng thái: Cần kiểm tra\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"subject\",\n      \"value\": \"Để giải quyết chế độ ưu đãi khi người có công từ trần\",\n      \"raw_value\": \"Để giải quyết chế độ ưu đãi khi người có công từ trần\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"recipients\",\n      \"value\": \"1\",\n      \"raw_value\": \"1\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"greeting\",\n      \"value\": \"CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  \",\n      \"raw_value\": \"CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  \",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"printed_pages\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_number_full\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_number\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_symbol\",\n      \"value\": \"null\",\n      \"raw_value\": \"null\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"document_type\",\n      \"value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"raw_value\": \"Căn cứ Quyết định ngày 01/01/2020\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"title\",\n      \"value\": \"Trạng thái: Cần kiểm tra\",\n      \"raw_value\": \"Trạng thái: Cần kiểm tra\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"subject\",\n      \"value\": \"Để giải quyết chế độ ưu đãi khi người có công từ trần\",\n      \"raw_value\": \"Để giải quyết chế độ ưu đãi khi người có công từ trần\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"recipients\",\n      \"value\": \"1\",\n      \"raw_value\": \"1\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"greeting\",\n      \"value\": \"CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  \",\n      \"raw_value\": \"CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  \",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    },\n    {\n      \"key\": \"printed_pages\",\n      \"value\": \"17\",\n      \"raw_value\": \"17\",\n      \"state\": \"missing\",\"group_id\": \"1\",\n      \"signer_id\": null,\n      \"evidence_ids\": [],\n      \"issue\": null\n    }\n  ],\n  \"requested_image_pages\": [],\n  \"issues\": []\n}"
+      }
+    }
+  ],
+  "created": 1793034193,
+  "model": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "system_fingerprint": "b11706-f74e2fa6a",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 2032,
+    "prompt_tokens": 3348,
+    "total_tokens": 5380,
+    "prompt_tokens_details": {
+      "cached_tokens": 3297
+    }
+  },
+  "id": "chatcmpl-v9xm0GrNDpnVtJu57B306qXx6pURJstf",
+  "timings": {
+    "cache_n": 3297,
+    "prompt_n": 51,
+    "prompt_ms": 395.176,
+    "prompt_per_token_ms": 7.748549019607843,
+    "prompt_per_second": 129.05642043039052,
+    "predicted_n": 2032,
+    "predicted_ms": 88855.669,
+    "predicted_per_token_ms": 43.749713934022644,
+    "predicted_per_second": 22.85729231299806
+  }
+}

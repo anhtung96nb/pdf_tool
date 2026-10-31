@@ -1,0 +1,31 @@
+{
+  "overall": "connection_pass_extraction_not_accepted",
+  "endpoint": "http://127.0.0.1:9931/v1",
+  "provider": "CompatibleLocal",
+  "model": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "connection_check": "PASS",
+  "application_dotnet_connector_check": "PASS",
+  "context_tokens": 32768,
+  "input_modalities": [
+    "text"
+  ],
+  "full_schema_attempts": 2,
+  "full_schema_accepted": 0,
+  "full_schema_seconds": [
+    108.48,
+    89.31
+  ],
+  "compact_schema_attempts": 1,
+  "compact_schema_accepted": 0,
+  "compact_seconds": 28.3,
+  "cloud_called": false,
+  "source_preserved": true,
+  "findings": [
+    "Ngày được suy từ tên file, không phải ngày ban hành trong nguồn.",
+    "Nhầm Mẫu số 12 và số đầu trang thành số/ký hiệu văn bản.",
+    "Lượt đầu lấy câu ví dụ từ system prompt làm nội dung trích xuất.",
+    "Lượt sửa tạo nhóm trang 3–4 dù Markdown chỉ có 2 trang.",
+    "Lượt rút gọn thiếu mã bằng chứng ở cả 7 trường; nhầm đối tượng hồ sơ với người ký."
+  ],
+  "scope": "Thử một Markdown có lỗi OCR, không phải benchmark cho mọi tài liệu; chưa kiểm tra ảnh/PDF."
+}

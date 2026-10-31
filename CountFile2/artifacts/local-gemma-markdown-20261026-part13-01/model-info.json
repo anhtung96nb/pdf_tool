@@ -1,0 +1,24 @@
+{
+  "id": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "owned_by": "llamacpp",
+  "architecture": {
+    "input_modalities": [
+      "text"
+    ],
+    "output_modalities": [
+      "text"
+    ]
+  },
+  "context_length": 32768,
+  "meta": {
+    "vocab_type": 1,
+    "n_vocab": 262144,
+    "n_ctx": 32768,
+    "n_ctx_train": 32768,
+    "n_embd": 1152,
+    "n_params": 999885952,
+    "size": 713892352,
+    "ftype": "Q4_0"
+  },
+  "loaded_status": "loaded"
+}

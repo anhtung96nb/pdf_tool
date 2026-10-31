@@ -1,0 +1,198 @@
+{
+  "type": "page",
+  "id": 3,
+  "status": "completed",
+  "image_width": 1200,
+  "image_height": 1700,
+  "warnings": [],
+  "text": "1",
+  "lines": [
+    {
+      "id": "3-1",
+      "reading_order": 1,
+      "polygon_pixels": [
+        [
+          1014.0,
+          55.0
+        ],
+        [
+          1046.0,
+          55.0
+        ],
+        [
+          1046.0,
+          96.0
+        ],
+        [
+          1014.0,
+          96.0
+        ]
+      ],
+      "polygon_points": [
+        [
+          507.0,
+          27.5
+        ],
+        [
+          523.0,
+          27.5
+        ],
+        [
+          523.0,
+          48.0
+        ],
+        [
+          507.0,
+          48.0
+        ]
+      ],
+      "raw_text": "1",
+      "text": "1",
+      "confidence": 0.9001566767692566,
+      "warnings": [],
+      "crop_rotation": "0"
+    }
+  ],
+  "layout_note": "Thứ tự đọc theo khoảng trắng; bảng được lưu dưới dạng dòng chữ và tọa độ, chưa khôi phục ô bảng.",
+  "document_page_number": {
+    "raw_text": "1",
+    "value": null,
+    "status": "needs_review",
+    "confidence": 0.8958168625831604,
+    "confirmed": false,
+    "source": "vietocr_roi",
+    "polygon_points": [
+      [
+        510.0,
+        29.5
+      ],
+      [
+        522.5,
+        29.5
+      ],
+      [
+        522.5,
+        45.0
+      ],
+      [
+        510.0,
+        45.0
+      ]
+    ],
+    "polygon_pixels": [
+      [
+        1020,
+        59
+      ],
+      [
+        1045,
+        59
+      ],
+      [
+        1045,
+        90
+      ],
+      [
+        1020,
+        90
+      ]
+    ],
+    "candidates": [
+      {
+        "polygon_pixels": [
+          [
+            1020,
+            59
+          ],
+          [
+            1045,
+            59
+          ],
+          [
+            1045,
+            90
+          ],
+          [
+            1020,
+            90
+          ]
+        ],
+        "polygon_points": [
+          [
+            510.0,
+            29.5
+          ],
+          [
+            522.5,
+            29.5
+          ],
+          [
+            522.5,
+            45.0
+          ],
+          [
+            510.0,
+            45.0
+          ]
+        ],
+        "readings": [
+          {
+            "raw_text": "1",
+            "value": "1",
+            "confidence": 0.8958168625831604,
+            "variant": "original"
+          },
+          {
+            "raw_text": "1",
+            "value": "1",
+            "confidence": 0.8906041979789734,
+            "variant": "gray"
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      "ambiguous_or_low_score_number"
+    ],
+    "roi_polygon_pixels": [
+      [
+        960,
+        0
+      ],
+      [
+        1200,
+        0
+      ],
+      [
+        1200,
+        170
+      ],
+      [
+        960,
+        170
+      ]
+    ],
+    "roi_polygon_points": [
+      [
+        480.0,
+        0.0
+      ],
+      [
+        600.0,
+        0.0
+      ],
+      [
+        600.0,
+        85.0
+      ],
+      [
+        480.0,
+        85.0
+      ]
+    ],
+    "roi": {
+      "right_percent": 20.0,
+      "top_percent": 10.0
+    }
+  }
+}

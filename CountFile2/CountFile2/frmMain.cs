@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CountFile2.Services;
@@ -25,7 +25,7 @@ namespace CountFile2
             var side = new FlowLayoutPanel { Dock = DockStyle.Left, Width = 210,
                 FlowDirection = FlowDirection.TopDown, WrapContents = false, Padding = new Padding(10), AutoScroll = true };
             side.Controls.Add(new Label { Text = "CHỨC NĂNG", AutoSize = true, Margin = new Padding(3, 10, 3, 15) });
-            foreach (string key in new[] { "Thống kê", "TIFF / PDF", "PDF hai lớp / PDF/A", "Giảm dung lượng PDF", "Làm sạch PDF", "OCR thông tin văn bản", "Trích xuất văn bản PDF" })
+            foreach (string key in new[] { "Thống kê", "TIFF / PDF", "PDF hai lớp / PDF/A", "Giảm dung lượng PDF", "Làm sạch PDF", "Việt OCR", "PaddleOCR", "OCR thông tin văn bản", "Trích xuất văn bản PDF" })
             {
                 string captured = key;
                 var button = new Button { Text = key, Width = 185, Height = 46 };
@@ -56,6 +56,8 @@ namespace CountFile2
                         case "PDF hai lớp / PDF/A": return new frmPdfProcessing();
                         case "Giảm dung lượng PDF": return new frmPdfCompression();
                         case "Làm sạch PDF": return new frmPdfCleanup();
+                        case "Việt OCR": return new frmVietOCR();
+                        case "PaddleOCR": return new frmPaddleOCR();
                         case "OCR thông tin văn bản": return new frmXuLyOCR();
                         case "Trích xuất văn bản PDF": return new frmTrichXuatVanBan();
                         default: throw new ArgumentException("Màn hình không tồn tại.");

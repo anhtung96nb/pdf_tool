@@ -1,0 +1,210 @@
+{
+  "document_groups": [
+    {
+      "id": "1",
+      "start_page": 1,
+      "end_page": 2,
+      "is_primary": true
+    },
+    {
+      "id": "2",
+      "start_page": 3,
+      "end_page": 4,
+      "is_primary": false
+    }
+  ],
+  "fields": [
+    {
+      "key": "issuer",
+      "value": "Căn cứ Quyết định ngày 01/01/2020",
+      "raw_value": "Căn cứ Quyết định ngày 01/01/2020",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "parent_organization",
+      "value": "Độc lập \"- Tự do \"- Hạnh phúc",
+      "raw_value": "Độc lập \"- Tự do \"- Hạnh phúc",
+      "state": "missing",
+      "group_id": "2","signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "issue_date",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number_full",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_symbol",
+      "value": "null",
+      "raw_value": "null",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_type",
+      "value": "Căn cứ Quyết định ngày 01/01/2020",
+      "raw_value": "Căn cứ Quyết định ngày 01/01/2020",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "title",
+      "value": "Trạng thái: Cần kiểm tra",
+      "raw_value": "Trạng thái: Cần kiểm tra",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "subject",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "recipients",
+      "value": "1",
+      "raw_value": "1",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "greeting",
+      "value": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  ",
+      "raw_value": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  ",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "printed_pages",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number_full",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_symbol",
+      "value": "null",
+      "raw_value": "null",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_type",
+      "value": "Căn cứ Quyết định ngày 01/01/2020",
+      "raw_value": "Căn cứ Quyết định ngày 01/01/2020",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "title",
+      "value": "Trạng thái: Cần kiểm tra",
+      "raw_value": "Trạng thái: Cần kiểm tra",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "subject",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "recipients",
+      "value": "1",
+      "raw_value": "1",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "greeting",
+      "value": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  ",
+      "raw_value": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  ",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "printed_pages",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing","group_id": "1",
+      "signer_id": null,
+      "evidence_ids": [],
+      "issue": null
+    }
+  ],
+  "requested_image_pages": [],
+  "issues": []
+}

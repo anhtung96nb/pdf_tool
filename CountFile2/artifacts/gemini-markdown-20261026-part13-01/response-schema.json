@@ -1,0 +1,132 @@
+{
+  "type": "object",
+  "properties": {
+    "document_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "start_page": {
+            "type": "integer"
+          },
+          "end_page": {
+            "type": "integer"
+          },
+          "is_primary": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "start_page",
+          "end_page",
+          "is_primary"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "enum": [
+              "printed_pages",
+              "document_number_full",
+              "document_number",
+              "document_symbol",
+              "issue_date",
+              "issuer",
+              "parent_organization",
+              "document_type",
+              "title",
+              "subject",
+              "recipients",
+              "greeting",
+              "signer_name",
+              "signer_title",
+              "signing_authority"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "raw_value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "found",
+              "missing",
+              "ambiguous",
+              "unreadable"
+            ]
+          },
+          "group_id": {
+            "type": "string"
+          },
+          "signer_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "issue": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "value",
+          "raw_value",
+          "state",
+          "group_id",
+          "signer_id",
+          "evidence_ids",
+          "issue"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "requested_image_pages": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "document_groups",
+    "fields",
+    "requested_image_pages",
+    "issues"
+  ],
+  "additionalProperties": false
+}

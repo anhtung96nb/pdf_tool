@@ -1,0 +1,40 @@
+{
+  "experiment": "compact_prompt_schema",
+  "model_requested": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "endpoint": "http://127.0.0.1:9931/v1",
+  "cloud_called": false,
+  "status": "invalid_evidence",
+  "http_status": 200,
+  "model_reported": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "usage": {
+    "completion_tokens": 253,
+    "prompt_tokens": 2790,
+    "total_tokens": 3043,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "timings": {
+    "cache_n": 0,
+    "prompt_n": 2790,
+    "prompt_ms": 14876.106,
+    "prompt_per_token_ms": 5.331937634408602,
+    "prompt_per_second": 187.54908038434252,
+    "predicted_n": 253,
+    "predicted_ms": 13276.195,
+    "predicted_per_token_ms": 52.68331349206349,
+    "predicted_per_second": 18.981342169198328
+  },
+  "finish_reason": "stop",
+  "validation_errors": [
+    "issuer: missing evidence",
+    "issue_date: missing evidence",
+    "document_number_full: missing evidence",
+    "title: missing evidence",
+    "subject: missing evidence",
+    "signer_name: missing evidence",
+    "signer_title: missing evidence"
+  ],
+  "fields": [],
+  "seconds": 28.3
+}

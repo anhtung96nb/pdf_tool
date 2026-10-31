@@ -1,0 +1,26 @@
+{
+  "provider": "CompatibleLocal",
+  "endpoint": "http://127.0.0.1:9931/v1",
+  "model": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "server": "llama.cpp via LlamaApp",
+  "loaded": true,
+  "context_tokens": 32768,
+  "input_modalities": [
+    "text"
+  ],
+  "cloud_called": false,
+  "python_schema_check": {
+    "seconds": 0.7,
+    "output_tokens": 11,
+    "output": {
+      "status": "ok"
+    },
+    "input_tokens": 25,
+    "http_status": 200
+  },
+  "application_adapter_check": {
+    "input_tokens": 25,
+    "output_tokens": 11,
+    "status": "PASS"
+  }
+}

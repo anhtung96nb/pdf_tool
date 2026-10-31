@@ -1,0 +1,34 @@
+{
+  "source_markdown": "D:\\Tungdv96\\file_scan\\viet_ocr_output\\Scan2026-03-10_141605_Part13.pdf.ocr.md",
+  "source_sha256": "8344f20c4186163217ea1feab449c2cb725efacbb8a056c9b6ee7cdbdaa0a9da",
+  "model_requested": "gemini-3.5-flash",
+  "model_reported": null,
+  "page_count_from_markdown": 2,
+  "source_line_count": 119,
+  "status": "failed",
+  "attempts": [
+    {
+      "attempt": 1,
+      "api": "interactions",
+      "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+      "seconds": 4.47
+    },
+    {
+      "attempt": 2,
+      "api": "interactions",
+      "http_status": 503,
+      "error": "gemini-3.5-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.",
+      "seconds": 2.44
+    },
+    {
+      "attempt": 3,
+      "api": "generateContent",
+      "http_status": 503,
+      "error": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+      "seconds": 1.5
+    }
+  ],
+  "pdf_sent": false,
+  "fields": [],
+  "issues": []
+}

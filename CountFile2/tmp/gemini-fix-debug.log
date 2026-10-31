@@ -1,0 +1,96 @@
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(40,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(41,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(42,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(43,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(44,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(45,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(47,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(48,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(49,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(50,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(51,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(52,37): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(54,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(55,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(56,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(57,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(58,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(59,36): warning CS0618: 'ConfigurationSettings.AppSettings' is obsolete: 'This method is obsolete, it has been replaced by System.Configuration!System.Configuration.ConfigurationManager.AppSettings' [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\Form1.cs(445,30): warning CS0168: The variable 'ex' is declared but never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(587,30): warning CS0168: The variable 'ex' is declared but never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(799,34): warning CS0168: The variable 'ex' is declared but never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(23,27): warning CS0169: The field 'frmXuLyOCR.currentRect' is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(22,23): warning CS0169: The field 'frmXuLyOCR.startPoint' is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(42,24): warning CS0169: The field 'frmXuLyOCR.currentPath' is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(36,24): warning CS0414: The field 'frmXuLyOCR.csvError' is assigned but its value is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(24,22): warning CS0414: The field 'frmXuLyOCR.isSelecting' is assigned but its value is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(39,21): warning CS0414: The field 'frmXuLyOCR.batch' is assigned but its value is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\frmXuLyOCR.cs(34,21): warning CS0414: The field 'frmXuLyOCR.totalFiles' is assigned but its value is never used [D:\Tungdv96\CountFile2\CountFile2\CountFile2\CountFile2.csproj]
+OK 1 loading OCR never executes old rule extraction
+OK 2 LLM extraction completed
+OK 3 mapped metadata / leading zeros
+OK 4 date normalization and evidence
+OK 5 signer pairing
+OK 6 LLM does not confirm or change locked numbers
+OK 7 usage/coverage
+OK 8 unconfigured is not silently replaced by rules
+OK 9 fabricated evidence rejected, one repair only
+OK 10 schema mismatch rejected
+OK 11 hallucinated value not accepted from valid line ID
+OK 12 protected field cannot be assigned by model
+OK 13 invalid calendar date rejected
+OK 14 confirmed human edit survives rerun
+OK 15 manual second signer survives model omission
+OK 16 changed source invalidates confirmation
+OK 17 never mix primary issuer with attached document signer
+OK 18 ambiguous primary stays reviewable
+OK 19 changing primary range archives old manual data
+OK 20 same source and configuration uses validated cache
+OK 21 model change invalidates cache
+OK 22 vision request contains rendered source image
+OK 23 vision reading separate from OCR and unconfirmed
+OK 24 image budget cannot silently skip requested source
+OK 25 bounded transient retry / unknown failed-call usage
+OK 26 configuration error is not retried
+OK 27 chunk/reduce covers every page within context
+OK 28 request budget cannot report partial document success
+OK 29 cancel retains manual values
+OK 30 DPAPI settings preserve keys without plaintext
+OK 31 keys excluded from options JSON
+OK 32 Gemini endpoint/header auth
+OK 33 Gemini stateless schema / no external tools
+OK 34 Gemini Interactions generation config uses documented parameters
+OK 35 Gemini output, usage, image association
+OK 36 local never receives Gemini key
+OK 37 Ollama schema/options/images/usage
+OK 38 compatible local protocol tested independently
+OK 39 unsupported schema is a visible error, no silent JSON downgrade
+OK 40 partial model output rejected
+OK 41 Gemini 503 identifies model overload and preserves safe server reason
+OK 42 Gemini authorization reason visible without echoing either key
+OK 43 Google error without status remains diagnostic
+OK 44 DNS failure distinguished from API key failure
+OK 45 authorization-style keys masked in diagnostic text
+OK 46 five sheets / one row per PDF including pending LLM
+OK 47 Excel text number and typed date
+OK 48 Excel separates provider and actual model
+OK 49 Excel evidence and history
+OK 50 locked Excel keeps old file
+OK 51 OCR formula text stays literal
+OK 52 oversize Excel cell fails without losing old report
+OK 53 metadata reload retains provenance/manual state
+OK 54 non-loopback HTTP requires explicit configuration
+OK 55 JSON adapter preserves lines and verified source without semantics
+OK 56 text adapter never fabricates geometry or rule-selected data
+OK 57 UI imports OCR, waits for model, no legacy fallback
+OK 58 UI end-to-end through injected HTTP mock
+OK 59 repeat import preserves scope without resetting fresh LLM result
+OK 60 API test bounded retry preserves actionable 503 in UI
+OK 61 API test recovers from overload using same key/model
+OK 62 API test never retries invalid credentials
+OK 63 automatic after-OCR persists content when model unconfigured
+OK 64 OCR overwrite retains saved manual metadata
+OK 65 cancel extraction stage keeps completed OCR output
+OK 66 changed PDF invalidates source before sending vision
+OK 67 all UI jobs release coordinator
+PASS 67 assertions; D:\Tungdv96\CountFile2\CountFile2\tmp\llm-tests\llm-9df9a04819a547a8bbf3d53b366544b0

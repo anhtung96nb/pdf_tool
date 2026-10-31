@@ -1,0 +1,32 @@
+{
+  "fields": {
+    "issuer": {
+      "value": "Cơ quan ban hành",
+      "evidence_ids": []
+    },
+    "issue_date": {
+      "value": "2026-03-10_141605_Part13",
+      "evidence_ids": []
+    },
+    "document_number_full": {
+      "value": "12",
+      "evidence_ids": []
+    },
+    "title": {
+      "value": "Bản khai",
+      "evidence_ids": []
+    },
+    "subject": {
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "evidence_ids": []
+    },
+    "signer_name": {
+      "value": "Trưng Huân",
+      "evidence_ids": []
+    },
+    "signer_title": {
+      "value": "Nam/Nữ",
+      "evidence_ids": []
+    }
+  }
+}

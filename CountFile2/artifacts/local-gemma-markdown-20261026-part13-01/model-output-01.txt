@@ -1,0 +1,230 @@
+{
+  "document_groups": [
+    {
+      "id": "1",
+      "start_page": 1,
+      "end_page": 2,
+      "is_primary": true
+    },
+    {
+      "id": "2",
+      "start_page": 2,
+      "end_page": 2,
+      "is_primary": false
+    }
+  ],
+  "fields": [
+    {
+      "key": "issuer",
+      "value": "người có công từ trần",
+      "raw_value": "người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "parent_organization",
+      "value": "người có công từ trần",
+      "raw_value": "người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "issue_date",
+      "value": "2026-03-10",
+      "raw_value": "2026-03-10",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number_full",
+      "value": "12",
+      "raw_value": "12",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_symbol",
+      "value": "12",
+      "raw_value": "12",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_type",
+      "value": "Căn cứ Quyết định ngày 01/01/2020",
+      "raw_value": "Căn cứ Quyết định ngày 01/01/2020",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "title",
+      "value": "Trạng thái: Cần kiểm tra",
+      "raw_value": "Trạng thái: Cần kiểm tra",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "subject",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "recipients",
+      "value": "1",
+      "raw_value": "1",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "greeting",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "printed_pages",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number_full",
+      "value": "12",
+      "raw_value": "12",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_number",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_symbol",
+      "value": "12",
+      "raw_value": "12",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "document_type",
+      "value": "Căn cứ Quyết định ngày 01/01/2020",
+      "raw_value": "Căn cứ Quyết định ngày 01/01/2020",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "title",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "subject",
+      "value": "1. Họ và tên người có công từ trần",
+      "raw_value": "1. Họ và tên người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "recipients",
+      "value": "1",
+      "raw_value": "1",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "greeting",
+      "value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "raw_value": "Để giải quyết chế độ ưu đãi khi người có công từ trần",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    },
+    {
+      "key": "printed_pages",
+      "value": "17",
+      "raw_value": "17",
+      "state": "missing",
+      "group_id": "1",
+      "signer_id": "1",
+      "evidence_ids": [],
+      "issue": null
+    }
+  ],
+  "requested_image_pages": [],
+  "issues": []
+}

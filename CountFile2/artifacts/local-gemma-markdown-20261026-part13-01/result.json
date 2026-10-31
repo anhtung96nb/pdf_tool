@@ -1,0 +1,50 @@
+{
+  "provider": "CompatibleLocal",
+  "base_url": "http://127.0.0.1:9931/v1",
+  "model_requested": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "model_reported": "ggml-org/gemma-3-1b-it-qat-GGUF:Q4_0",
+  "source_markdown": "D:\\Tungdv96\\file_scan\\viet_ocr_output\\Scan2026-03-10_141605_Part13.pdf.ocr.md",
+  "source_sha256": "8344f20c4186163217ea1feab449c2cb725efacbb8a056c9b6ee7cdbdaa0a9da",
+  "page_count_from_markdown": 2,
+  "source_line_count": 119,
+  "status": "failed",
+  "attempts": [
+    {
+      "attempt": 1,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "error": "Nonempty value without source",
+      "seconds": 108.48
+    },
+    {
+      "attempt": 2,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "error": "Invalid document group/page range",
+      "seconds": 89.31
+    }
+  ],
+  "cloud_called": false,
+  "pdf_sent": false,
+  "fields": [],
+  "issues": [],
+  "usage": {
+    "completion_tokens": 2032,
+    "prompt_tokens": 3348,
+    "total_tokens": 5380,
+    "prompt_tokens_details": {
+      "cached_tokens": 3297
+    }
+  },
+  "timings": {
+    "cache_n": 3297,
+    "prompt_n": 51,
+    "prompt_ms": 395.176,
+    "prompt_per_token_ms": 7.748549019607843,
+    "prompt_per_second": 129.05642043039052,
+    "predicted_n": 2032,
+    "predicted_ms": 88855.669,
+    "predicted_per_token_ms": 43.749713934022644,
+    "predicted_per_second": 22.85729231299806
+  }
+}

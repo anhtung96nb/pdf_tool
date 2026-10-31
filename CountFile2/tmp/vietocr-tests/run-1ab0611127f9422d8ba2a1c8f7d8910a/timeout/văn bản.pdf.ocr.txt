@@ -1,0 +1,8 @@
+===== Trang 1 / 2 [failed] =====
+[Lỗi OCR: VietOCR quá thời gian chờ 1 giây.]
+
+
+===== Trang 2 / 2 [failed] =====
+[Lỗi OCR: Worker đã dừng. ]
+
+

@@ -136,3 +136,17 @@ D:\Tungdv96\CountFile2\CountFile2\tmp\extraction-build\Debug\tessdata\vie.traine
 D:\Tungdv96\CountFile2\CountFile2\tmp\extraction-build\Debug\CountFile2.exe.config
 D:\Tungdv96\CountFile2\CountFile2\tmp\extraction-build\Debug\CountFile2.exe
 D:\Tungdv96\CountFile2\CountFile2\tmp\extraction-build\Debug\CountFile2.pdb
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\prepare_models.py
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\worker.py
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\requirements.txt
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\setup.ps1
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\README.md
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\vgg_seq2seq.pth
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\config.yaml
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\manifest.json
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\runtime-versions.txt
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\worker.py
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\requirements.txt
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\setup.ps1
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\README.md
+D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\page_number.py
