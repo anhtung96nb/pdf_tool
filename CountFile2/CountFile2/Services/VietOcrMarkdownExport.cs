@@ -54,7 +54,7 @@ namespace CountFile2.Services
         private static IEnumerable<string> Lines(string value)
         { return (value ?? "").Replace("\r\n", "\n").Replace('\r', '\n').Split('\n'); }
 
-        private static string Escape(string value)
+        internal static string Escape(string value)
         {
             var result = new StringBuilder();
             bool leading = true;

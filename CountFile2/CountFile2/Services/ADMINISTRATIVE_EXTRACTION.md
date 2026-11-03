@@ -1,6 +1,6 @@
 # Trích xuất văn bản PDF bằng LLM
 
-Cập nhật 26/10/2026: bộ bóc tách theo quy tắc cũ đã bị gỡ theo yêu cầu. Màn hình được dùng trong **Thông tin / Excel** của Việt OCR/PaddleOCR và có thể mở độc lập.
+Cập nhật 04/11/2026: mặc định OCR → Markdown → Ollama `qwen3.5:4b`; [khởi chạy và sử dụng](../../ollama-ocr-markdown.md). Bộ bóc tách theo quy tắc cũ đã bị gỡ theo yêu cầu. Màn hình được dùng trong **Thông tin / Excel** của Việt OCR/PaddleOCR và có thể mở độc lập.
 
 Hướng dẫn đầy đủ: [Bóc tách sau OCR và Excel](../../post-ocr-metadata-excel.md). Kết quả kiểm thử hiện tại: [Xác minh LLM](../../verify-llm-extraction.md).
 
@@ -18,6 +18,7 @@ Hướng dẫn đầy đủ: [Bóc tách sau OCR và Excel](../../post-ocr-metad
 - `PostOcrExtractionService`: nhập JSON/cache/MD/TXT, xác minh nguồn và hệ tọa độ.
 - `ExtractionMetadata`: tạo trường trống, số trang PDF và liên kết nhãn ghi tay dùng chung.
 - `LlmExtractionService`: chuẩn bị dữ liệu, chia/tổng hợp tài liệu, kiểm tra JSON/bằng chứng, cache, đối chiếu ảnh, bảo toàn sửa tay.
+- `LlmMarkdownInput`: đọc file Markdown, tách nội dung theo trang, giải mã escape, ánh xạ đúng dòng về tọa độ và gắn mã nguồn khi gửi model. Markdown có dấu vân tay riêng.
 - `LlmProviders`: payload riêng cho Gemini Interactions, Ollama native và local tương thích. Không chuyển cloud tự động.
 - `LlmSettingsForm`/`LlmSettingsStore`: cấu hình và khóa được bảo vệ theo tài khoản Windows.
 - `ExtractionReview`/`PostOcrReportExport`: rà soát, JSON và Excel năm sheet.

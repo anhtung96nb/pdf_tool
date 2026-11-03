@@ -107,7 +107,7 @@ namespace CountFile2.Services
         public static void Preserve(AdministrativeDocument previous, AdministrativeDocument current)
         {
             if (previous == null) return;
-            bool same = !string.IsNullOrEmpty(previous.Fingerprint) && previous.Fingerprint == current.Fingerprint && previous.OcrFingerprint == current.OcrFingerprint;
+            bool same = !string.IsNullOrEmpty(previous.Fingerprint) && previous.Fingerprint == current.Fingerprint && previous.OcrFingerprint == current.OcrFingerprint && previous.MarkdownFingerprint == current.MarkdownFingerprint;
             bool retained = false;
             foreach (var old in previous.Fields.Where(f => f.Name != "Số trang ghi tay" && f.Name != "Trang PDF")) {
                 bool manual = old.Confirmed || old.HasManualValue || old.Value != old.OriginalValue;

@@ -15,7 +15,7 @@ namespace CountFile2.Services
 {
     public sealed class LlmExtractionService : IDisposable
     {
-        public const string PromptVersion = "vi-administrative-llm-1";
+        public const string PromptVersion = "vi-administrative-markdown-2";
         public const string SchemaVersion = "llm-schema-1";
         private readonly ILlmExtractionProvider provider;
         private readonly bool ownsProvider;
@@ -45,17 +45,22 @@ namespace CountFile2.Services
             token.ThrowIfCancellationRequested(); PostOcrExtractionService.ValidateCurrentSource(doc);
             var serializer = PostOcrExtractionService.Serializer();
             var previous = serializer.Deserialize<AdministrativeDocument>(serializer.Serialize(doc));
-            var working = serializer.Deserialize<AdministrativeDocument>(serializer.Serialize(doc));
-            ExtractionMetadata.Initialize(working); working.ExtractionProvider = options.Provider; working.ExtractionModel = options.Model; working.PromptVersion = PromptVersion;
             doc.LlmStatus = "running"; doc.LlmError = null;
-            var run = new Run { Source = working, Options = options, Token = token, Progress = progress };
+            var run = new Run { Options = options, Token = token, Progress = progress };
             try {
+                if (doc.MarkdownPath != null) {
+                    LlmMarkdownInput.Attach(doc, doc.MarkdownPath, token);
+                    if (previous.MarkdownFingerprint != doc.MarkdownFingerprint) ExtractionReview.Preserve(previous, doc);
+                }
+                var working = serializer.Deserialize<AdministrativeDocument>(serializer.Serialize(doc));
+                ExtractionMetadata.Initialize(working); working.ExtractionProvider = options.Provider; working.ExtractionModel = options.Model; working.PromptVersion = PromptVersion;
+                run.Source = working;
                 var lines = PrepareLines(working).ToList();
                 if (lines.Count == 0) throw new InvalidDataException("Không có nội dung OCR để gửi LLM. Hãy OCR hoặc nhập JSON trước.");
                 foreach (var line in lines) if (!run.Evidence.ContainsKey(line.Id)) run.Evidence.Add(line.Id, line); else throw new InvalidDataException("Mã dòng OCR bị trùng.");
-                string key = Hash(serializer.Serialize(new { source = working.Fingerprint, ocr = working.OcrFingerprint, lines = lines,
+                string key = Hash(serializer.Serialize(new { source = working.Fingerprint, ocr = working.OcrFingerprint, markdown = working.MarkdownFingerprint, lines = lines,
                     first = working.PrimaryStartPage, last = working.PrimaryEndPage, provider = options.Provider, endpoint = options.Provider == "Gemini" ? HttpLlmExtractionProvider.GeminiProtocolVersion : options.LocalBaseUrl,
-                    model = options.Model, prompt = PromptVersion, schema = SchemaVersion, mode = options.ImageMode, context = options.ContextTokens, output = options.OutputTokens, images = options.MaxImages }));
+                    model = options.Model, prompt = PromptVersion, schema = SchemaVersion, mode = options.ImageMode, context = options.ContextTokens, output = options.OutputTokens, images = options.MaxImages, think = options.OllamaThink }));
                 working.ExtractionCacheKey = key;
                 LlmResponseData response = null;
                 string cachePath = Path.Combine(options.CacheDirectory, key + ".json");
@@ -127,6 +132,8 @@ namespace CountFile2.Services
                     }
                 }
                 token.ThrowIfCancellationRequested();
+                if (working.MarkdownPath != null && PostOcrExtractionService.Fingerprint(working.MarkdownPath) != working.MarkdownFingerprint)
+                    throw new InvalidDataException("Markdown thay đổi trong khi LLM xử lý. Giữ file OCR; chạy lại LLM với nội dung mới.");
                 Apply(run, response);
                 working.AnalyzedPages = Enumerable.Range(working.PrimaryStartPage, working.PrimaryEndPage - working.PrimaryStartPage + 1).ToList();
                 if (working.LlmStatus != "needs_review") working.LlmStatus = "completed";
@@ -173,9 +180,10 @@ namespace CountFile2.Services
                 page_status = run.Source.Pages.Where(p => p.Page >= run.Source.PrimaryStartPage && p.Page <= run.Source.PrimaryEndPage).Select(p => new { page = p.Page, status = p.OcrStatus, error = p.Error }),
                 source_warnings = run.Source.SourceWarnings,
                 locked_handwritten_pages = run.Source.Pages.Where(p => p.NumberConfirmed).Select(p => new { page = p.Page, value = p.HandwrittenNumber }),
-                lines = lines.Select(l => new { id = l.Id, page = l.Page, text = l.RawText ?? l.Text, has_geometry = l.HasGeometry,
+                line_layout = lines.Where(l => l.HasGeometry).Select(l => new { id = l.Id, page = l.Page,
                     x = l.LayoutX ?? l.X, y = l.LayoutY ?? l.Y, width = l.LayoutWidth ?? l.Width, height = l.LayoutHeight ?? l.Height }) };
-            return new LlmRequest { Instructions = Instructions, Text = PostOcrExtractionService.Serializer().Serialize(data) + (extra ?? ""), Schema = Schema(), AllowedEvidenceIds = lines.Select(l => l.Id).ToArray() };
+            return new LlmRequest { Instructions = Instructions, Text = "METADATA ỨNG DỤNG (không phải nội dung văn bản):\n" + PostOcrExtractionService.Serializer().Serialize(data) + "\n\n" +
+                LlmMarkdownInput.Render(lines, run.Source.PageCount) + (extra ?? ""), Schema = Schema(), AllowedEvidenceIds = lines.Select(l => l.Id).ToArray() };
         }
         private static string ReductionText(Run run, List<LlmResponseData> results)
         {
@@ -363,8 +371,9 @@ namespace CountFile2.Services
 Đọc tất cả dòng/trang được cung cấp; nhóm các văn bản khác nhau vào document_groups (id duy nhất, start_page/end_page là số trang PDF gốc). Chỉ đánh is_primary khi xác định được văn bản chính. Nếu không rõ, không chọn bừa. Không ghép ngày/cơ quan/người ký của các văn bản khác nhóm.
 Fields dùng key: issuer (cơ quan ban hành), parent_organization (chủ quản), issue_date (ngày ban hành), document_number_full (số/ký hiệu), document_number (phần số), document_symbol (ký hiệu), document_type (loại), title (tiêu đề in), subject (trích yếu in, không tự tóm tắt), recipients, greeting, printed_pages. Giữ số 0 đầu. Phân biệt ngày dẫn chiếu/ngày nhận với ngày ban hành; cơ quan chủ quản với cơ quan trực tiếp ban hành.
 Người ký dùng signer_name, signer_title và signing_authority; mỗi khối ký có signer_id riêng và cùng group_id. Không lấy tên người được nhắc trong nội dung làm người ký. KT./TL./TUQ./TM. thuộc quyền hạn ký; chức vụ thực tế là dòng chức vụ người trực tiếp ký. Không suy danh tính từ nét chữ ký. Chức vụ/tên nhiều người giữ đúng cặp.
-Mỗi field có raw_value chép đúng chữ nguồn, value giữ nội dung nguồn (chỉ chuẩn hóa khoảng trắng, ngày thành yyyy-MM-dd khi đầy đủ hợp lệ), evidence_ids là các mã dòng đã gửi theo thứ tự đọc hoặc image:pN của ảnh/PDF thực sự đã gửi. Không tạo tọa độ/ID mới, không sửa tên/ký hiệu theo kiến thức. Nếu không có nguồn, value=null, state=missing/unreadable/ambiguous và issue ngắn. Không có thông tin không được bịa cho đủ schema. Bằng chứng phải nằm trong phạm vi nhóm văn bản.
+Đầu vào là nội dung Markdown OCR theo trang; đầu mỗi dòng có [mã dòng] do ứng dụng thêm. Mã dòng và tiêu đề Trang là cấu trúc ứng dụng, không phải dữ liệu của văn bản. Ký tự escape Markdown và HTML entity chỉ biểu diễn chữ gốc. Metadata trạng thái, tên file và số mẫu biểu không phải số/ký hiệu hoặc ngày ban hành. Nhận biết loại tài liệu trước khi chọn các trường. Với bản khai/đơn, phân biệt người khai với người xác nhận và người được nhắc tới; phân biệt ngày lập với ngày xác nhận. Không gán cơ quan xác nhận thành cơ quan ban hành khi không rõ.
+Mỗi field có raw_value chép đúng chữ nguồn sau khi bỏ escape Markdown, value giữ nội dung nguồn (chỉ chuẩn hóa khoảng trắng, ngày thành yyyy-MM-dd khi đầy đủ hợp lệ), evidence_ids là chính các mã bên trong dấu [] đã gửi theo thứ tự đọc hoặc image:pN của ảnh/PDF thực sự đã gửi. Không tạo tọa độ/ID mới, không sửa tên/ký hiệu theo kiến thức. Nếu không có nguồn, value=null, state=missing/unreadable/ambiguous và issue ngắn. Không có thông tin không được bịa cho đủ schema. Bằng chứng phải nằm trong phạm vi nhóm văn bản.
 Không trả pdf_pages/handwritten_pages; đó là metadata do ứng dụng khóa. Khi cần đọc rõ chữ lỗi OCR/khối ký/số, trả requested_image_pages gồm số trang PDF để đối chiếu; nếu ảnh chưa được gửi không được dùng image ID làm bằng chứng. Với ảnh/PDF đã gửi, image:pN là bằng chứng toàn trang N, không tuyên bố đó là vị trí chữ chính xác.
-Ví dụ: 'Căn cứ Quyết định ngày 01/01/2020' không phải ngày ban hành; 'KT. GIÁM ĐỐC / PHÓ GIÁM ĐỐC / Nguyễn Văn An' có chức vụ PHÓ GIÁM ĐỐC và quyền hạn KT. GIÁM ĐỐC. Không đủ dữ liệu thì trả null. Không tự xác nhận kết quả thay người dùng.";
+Không đủ dữ liệu thì trả null. Không tự xác nhận kết quả thay người dùng.";
     }
 }

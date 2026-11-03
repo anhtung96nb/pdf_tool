@@ -1,13 +1,13 @@
 # Bóc tách thông tin bằng LLM và báo cáo Excel
 
-Cập nhật 26/10/2026. Bộ chọn trường theo quy tắc cũ đã được gỡ. VietOCR/PaddleOCR vẫn nhận dạng chữ; Gemini hoặc LLM local phân tích nội dung sau OCR. Không tự cài model hay chuyển nhà cung cấp khi gặp lỗi.
+Cập nhật 04/11/2026: luồng mặc định **OCR → Markdown → Ollama `qwen3.5:4b` → JSON/Excel**. Xem [hướng dẫn Ollama](ollama-ocr-markdown.md) để khởi chạy và chuyển cấu hình cũ. Bộ chọn trường theo quy tắc cũ đã được gỡ. Không tự cài model hay chuyển nhà cung cấp khi gặp lỗi.
 
 ## Sử dụng
 
-1. Mở **Việt OCR** hoặc **PaddleOCR**, chọn PDF/thư mục và bật **Bóc tách thông tin sau OCR**.
+1. Mở **Việt OCR** hoặc **PaddleOCR**, chọn PDF/thư mục và bật **Trích xuất LLM sau khi lưu Markdown**.
 2. Mở **Cấu hình LLM** để chọn **Gemini API**, **Ollama local**, hoặc **API local tương thích OpenAI**. Nhập tên model chính xác. Gemini cần API key; local cần địa chỉ server và token nếu server yêu cầu. Có thể để model trống và cấu hình sau.
-3. Chọn dữ liệu gửi: **Chỉ nội dung OCR**, **OCR + ảnh khi cần**, hoặc **OCR + PDF đối chiếu (Gemini)**. Hai chế độ sau cần model có vision và bật khả năng đọc ảnh. PDF đối chiếu chỉ dùng toàn bộ phạm vi PDF, tối đa 10 MB/30 trang và phải vừa context; với phạm vi trang riêng, dùng ảnh.
-4. Chạy OCR. Mỗi PDF lưu các định dạng toàn văn đã chọn và `.pdf.ocr.metadata.json`. Nếu chưa có LLM, kết quả OCR vẫn được lưu; thông tin văn bản có trạng thái **LLM chưa cấu hình**, không dùng quy tắc thay thế.
+3. Chọn dữ liệu gửi: **Markdown OCR (văn bản)**, **Markdown OCR + ảnh khi cần**, hoặc **Markdown OCR + PDF (Gemini)**. Hai chế độ sau cần model có vision và bật khả năng đọc ảnh. PDF đối chiếu chỉ dùng toàn bộ phạm vi PDF, tối đa 10 MB/30 trang và phải vừa context; với phạm vi trang riêng, dùng ảnh.
+4. Chạy OCR. Mỗi PDF luôn lưu `.pdf.ocr.md` trước khi trích xuất, thêm các định dạng toàn văn đã chọn và `.pdf.ocr.metadata.json`. Nếu thiếu dịch vụ/model, kết quả OCR vẫn được lưu và bước LLM báo trạng thái riêng.
 5. Mở **Thông tin / Excel** hoặc **Rà soát / Xuất Excel**, chọn PDF, rồi **Chạy lại LLM** khi đã cấu hình. Nút chạy lại bỏ qua cache. Chỉ mở tab rà soát không tự gọi API lần nữa.
 6. Chọn từng trường để đối chiếu bằng chứng/PDF, sửa và xác nhận hoặc chọn **Không áp dụng**. Đề xuất LLM, giá trị hiện tại và lịch sử được lưu riêng. LLM không tự xác nhận.
 7. Nếu PDF chứa nhiều văn bản, đặt trang bắt đầu/kết thúc văn bản chính rồi **Bóc tách lại phạm vi**. Bản sửa thuộc phạm vi cũ chỉ được lưu vào lịch sử, không chép sang văn bản khác.
@@ -22,7 +22,7 @@ Cập nhật 26/10/2026. Bộ chọn trường theo quy tắc cũ đã được 
 
 ## Phân tích và kiểm tra
 
-Ứng dụng gửi dòng OCR nguyên văn kèm mã nguồn/trang, bố cục, trạng thái trang và phạm vi. Tài liệu dài được chia phần rồi tổng hợp các ứng viên kèm đoạn nguồn. Không chỉ đọc trang đầu/cuối. Nếu vượt context, số lượt hoặc giới hạn ảnh, tác vụ báo chưa hoàn tất; không nhận kết quả một phần là thành công.
+Ứng dụng đọc Markdown đã lưu, gửi nội dung theo trang kèm mã dòng, bố cục đối chiếu, trạng thái trang và phạm vi. Không gửi tên file/trạng thái xuất như nội dung của văn bản. Tài liệu dài được chia phần rồi tổng hợp các ứng viên kèm đoạn nguồn. Không chỉ đọc trang đầu/cuối. Nếu vượt context, số lượt hoặc giới hạn ảnh, tác vụ báo chưa hoàn tất; không nhận kết quả một phần là thành công.
 
 LLM nhóm văn bản và trả JSON gồm cơ quan ban hành/chủ quản, ngày ban hành, số/ký hiệu, loại, tiêu đề, trích yếu, nơi nhận/kính gửi, từng cặp tên/chức vụ/quyền hạn ký và số in sẵn. Ứng dụng kiểm tra schema, mã bằng chứng, phạm vi nhóm, ngày hợp lệ và nội dung giá trị có trong nguồn. Giá trị không khớp được bỏ trống và yêu cầu rà soát; đây là kiểm tra kết quả, không phải bộ quy tắc chọn trường cũ.
 

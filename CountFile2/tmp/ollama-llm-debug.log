@@ -1,0 +1,85 @@
+OK 1 loading OCR never executes old rule extraction
+OK 2 LLM extraction completed
+OK 3 mapped metadata / leading zeros
+OK 4 date normalization and evidence
+OK 5 signer pairing
+OK 6 LLM does not confirm or change locked numbers
+OK 7 usage/coverage
+OK 8 unconfigured is not silently replaced by rules
+OK 9 fabricated evidence rejected, one repair only
+OK 10 schema mismatch rejected
+OK 11 hallucinated value not accepted from valid line ID
+OK 12 protected field cannot be assigned by model
+OK 13 invalid calendar date rejected
+OK 14 confirmed human edit survives rerun
+OK 15 manual second signer survives model omission
+OK 16 changed source invalidates confirmation
+OK 17 never mix primary issuer with attached document signer
+OK 18 ambiguous primary stays reviewable
+OK 19 changing primary range archives old manual data
+OK 20 same source and configuration uses validated cache
+OK 21 model change invalidates cache
+OK 22 vision request contains rendered source image
+OK 23 vision reading separate from OCR and unconfirmed
+OK 24 image budget cannot silently skip requested source
+OK 25 bounded transient retry / unknown failed-call usage
+OK 26 configuration error is not retried
+OK 27 chunk/reduce covers every page within context
+OK 28 request budget cannot report partial document success
+OK 29 cancel retains manual values
+OK 30 DPAPI settings preserve keys without plaintext
+OK 31 keys excluded from options JSON
+OK 32 Gemini endpoint/header auth
+OK 33 Gemini stateless schema / no external tools
+OK 34 Gemini Interactions generation config uses documented parameters
+OK 35 Gemini output, usage, image association
+OK 36 local never receives Gemini key
+OK 37 Ollama schema/options/images/usage
+OK 38 compatible local protocol tested independently
+OK 39 unsupported schema is a visible error, no silent JSON downgrade
+OK 40 partial model output rejected
+OK 41 Gemini 503 identifies model overload and preserves safe server reason
+OK 42 Gemini authorization reason visible without echoing either key
+OK 43 Google error without status remains diagnostic
+OK 44 DNS failure distinguished from API key failure
+OK 45 authorization-style keys masked in diagnostic text
+OK 46 Markdown content carries IDs and omits export metadata/filename
+OK 47 prompt has form-role guidance without sample names or dates
+OK 48 escaped Markdown maps back to original geometry and literal values
+OK 49 unchanged saved Markdown reuses validated cache
+OK 50 changed Markdown invalidates cache/confirmation and never reuses a different text box
+OK 51 Markdown changed during inference cannot produce a completed result
+OK 52 missing intermediate Markdown cannot silently use stale OCR text
+OK 53 Markdown page markers must agree with the source PDF
+OK 54 default workflow uses local qwen3.5:4b Markdown without thinking
+OK 55 Ollama discovery uses native local API and excludes cloud models
+OK 56 Qwen Ollama call disables thinking and requires the JSON schema
+OK 57 settings loads installed Ollama tags and retains the selected model
+OK 58 native Ollama settings reject OpenAI-style endpoint suffix
+OK 59 five sheets / one row per PDF including pending LLM
+OK 60 Excel text number and typed date
+OK 61 Excel separates provider and actual model
+OK 62 Excel evidence and history
+OK 63 locked Excel keeps old file
+OK 64 OCR formula text stays literal
+OK 65 oversize Excel cell fails without losing old report
+OK 66 metadata reload retains provenance/manual state
+OK 67 non-loopback HTTP requires explicit configuration
+OK 68 JSON adapter preserves lines and verified source without semantics
+OK 69 text adapter never fabricates geometry or rule-selected data
+OK 70 UI imports OCR, waits for model, no legacy fallback
+OK 71 UI end-to-end through injected HTTP mock
+OK 72 repeat import preserves scope without resetting fresh LLM result
+OK 73 API test bounded retry preserves actionable 503 in UI
+OK 74 API test recovers from overload using same key/model
+OK 75 API test never retries invalid credentials
+OK 76 automatic after-OCR persists content when model unconfigured
+OK 77 OCR overwrite retains saved manual metadata
+OK 78 cancel extraction stage keeps completed OCR output
+OK 79 changed PDF invalidates source before sending vision
+OK 80 Markdown committed before Ollama request
+OK 81 real OCR pipeline sends annotated Markdown to native Ollama
+OK 82 PDF to saved Markdown to Ollama to validated metadata
+OK 83 pipeline exports five sheets and one PDF row
+OK 84 all UI jobs release coordinator
+PASS 84 assertions; D:\Tungdv96\CountFile2\CountFile2\tmp\llm-tests\llm-8f7ea6700970489ab9987285f637b137

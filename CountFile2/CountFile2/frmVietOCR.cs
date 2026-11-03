@@ -39,7 +39,7 @@ namespace CountFile2
         private readonly ProgressBar progress = new ProgressBar { Dock = DockStyle.Bottom, Height = 18 };
         private readonly List<VietOcrResult> results = new List<VietOcrResult>();
         private readonly CheckBox readNumbers = new CheckBox { Text = "Đọc số trang viết tay", Checked = true, AutoSize = true };
-        private readonly CheckBox extractMetadata = new CheckBox { Text = "Bóc tách thông tin sau OCR", Checked = true, AutoSize = true };
+        private readonly CheckBox extractMetadata = new CheckBox { Text = "Trích xuất LLM sau khi lưu Markdown", Checked = true, AutoSize = true };
         private readonly frmTrichXuatVanBan metadataForm;
         private readonly TabControl resultTabs;
         private readonly TabPage metadataTab;
@@ -65,7 +65,7 @@ namespace CountFile2
             AddRow(Button("Thư mục đích", () => ChooseFolder(output)), output, Label("Trống: thư mục viet-ocr cạnh nguồn"));
             AddRow(Label("Xuất:"), format, recursive, overwrite, start, cancel, openOutput);
             var reviewMetadata = new Button { Text = "Rà soát / Xuất Excel", AutoSize = true };
-            AddRow(extractMetadata, Button("Cấu hình LLM", () => metadataForm.ConfigureLlm()), reviewMetadata, Label("Gemini / LLM local • một dòng/PDF"));
+            AddRow(extractMetadata, Button("Cấu hình LLM", () => metadataForm.ConfigureLlm()), reviewMetadata, Label("OCR → Markdown → Ollama / LLM • một dòng/PDF"));
             AddRow(Label("Python:"), python, Button("Chọn python.exe", ChoosePython));
             AddRow(Label("DPI:"), dpi, Label("Thiết bị:"), device, Label("Xoay trang:"), rotation, Label("Chờ/trang (giây):"), timeout);
             numberPanel = new VietOcrPageNumberPanel(ReadOptions);
@@ -138,7 +138,7 @@ namespace CountFile2
                 WorkerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, paddle ? "PaddleOcr" : "VietOcr", "worker.py"),
                 PythonPath = python.Text.Trim(), Dpi = (int)dpi.Value, Rotation = rotation.SelectedIndex * 90,
                 Device = device.SelectedIndex == 0 ? "cpu" : "cuda:0", TimeoutSeconds = (int)timeout.Value,
-                WriteText = false, WriteMarkdown = format.SelectedIndex != 2, WriteJson = format.SelectedIndex != 1,
+                WriteText = false, WriteMarkdown = format.SelectedIndex != 2 || extractMetadata.Checked, WriteJson = format.SelectedIndex != 1,
                 Recursive = recursive.Checked, Overwrite = overwrite.Checked, ReadPageNumbers = !paddle && readNumbers.Checked,
                 ExtractMetadata = extractMetadata.Checked,
                 LlmOptions = metadataForm.LlmOptions.Copy(),

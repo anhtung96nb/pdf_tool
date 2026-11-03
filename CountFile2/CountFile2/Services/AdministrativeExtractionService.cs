@@ -16,6 +16,7 @@ namespace CountFile2.Services
     {
         public string Id { get; set; }
         public string RawText { get; set; }
+        public string MarkdownText { get; set; }
         public bool HasGeometry { get; set; } = true;
         public float? LayoutX { get; set; }
         public float? LayoutY { get; set; }
@@ -58,6 +59,8 @@ namespace CountFile2.Services
         public string Engine { get; set; }
         public string OcrSourcePath { get; set; }
         public string OcrFingerprint { get; set; }
+        public string MarkdownPath { get; set; }
+        public string MarkdownFingerprint { get; set; }
         public string RuleVersion { get; set; }
         public string ExtractionProvider { get; set; }
         public string ExtractionModel { get; set; }

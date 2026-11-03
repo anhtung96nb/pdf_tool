@@ -145,6 +145,7 @@
     <Compile Include="Services\LlmExtractionOptions.cs" />
     <Compile Include="Services\LlmProviders.cs" />
     <Compile Include="Services\LlmExtractionService.cs" />
+    <Compile Include="Services\LlmMarkdownInput.cs" />
     <Compile Include="LlmSettingsForm.cs"><SubType>Form</SubType></Compile>
     <Compile Include="Services\ExtractionExportService.cs" />
     <Compile Include="frmTrichXuatVanBan.cs">

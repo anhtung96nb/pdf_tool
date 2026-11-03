@@ -1,5 +1,7 @@
 # Xác minh chuyển trích xuất sang LLM
 
+> Cập nhật 04/11/2026: đã triển khai OCR → Markdown → Ollama `qwen3.5:4b`, PASS 84 kiểm tra Debug và Release. Ollama thật tại localhost:11434 chưa chạy; chưa đánh giá model này trên tài liệu. Xem [biên bản mới](verify-ollama-markdown.md).
+
 > Cập nhật 26/10/2026 theo yêu cầu kiểm tra Gemini: đọc metadata model bằng khóa được cung cấp thành công HTTP 200; sinh JSON gặp 503/quá tải hoặc timeout. Đã sửa thông báo/retry và chạy 67 kiểm thử trên Debug/Release. Xem `verify-gemini-connection.md`. Báo cáo 58 assertions bên dưới là lần xác minh trước đó bằng mock, không phải kết quả kiểm tra API mới.
 
 Ngày: 26/10/2026. Theo yêu cầu, không cài LLM, không dùng API key thật và không gửi tài liệu thật đến Gemini/local model. Không công bố độ chính xác trích xuất.

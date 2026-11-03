@@ -68,6 +68,10 @@ namespace CountFile2.Services
                 body = new { model = options.Model, stream = false, format = request.Schema,
                     options = new { temperature = 0, num_ctx = options.ContextTokens, num_predict = options.OutputTokens },
                     messages = new object[] { new { role = "system", content = request.Instructions }, user } };
+                if (options.Model.StartsWith("qwen3", StringComparison.OrdinalIgnoreCase)) {
+                    var fields = PostOcrExtractionService.Serializer().Deserialize<Dictionary<string, object>>(PostOcrExtractionService.Serializer().Serialize(body));
+                    fields["think"] = options.OllamaThink; body = fields;
+                }
             } else {
                 string root = options.LocalBaseUrl.TrimEnd('/');
                 url = root.EndsWith("/v1", StringComparison.OrdinalIgnoreCase) ? root + "/chat/completions" : root + "/v1/chat/completions";
@@ -105,9 +109,13 @@ namespace CountFile2.Services
                                     if (!Regex.IsMatch(code, @"^[A-Z][A-Z0-9_]{1,63}$")) code = null;
                                     detail = LlmApiException.SafeMessage(detail, options);
                                 } catch (Exception) { }
+                            } else if (options.Provider == "Ollama") {
+                                try { detail = LlmApiException.SafeMessage(S(PostOcrExtractionService.Serializer().Deserialize<Dictionary<string, object>>(data), "error"), options); }
+                                catch (Exception) { }
+                                if (status == 404) advice = "Không tìm thấy endpoint/model Ollama. Kiểm tra URL gốc và tải đúng model bằng ollama pull " + options.Model + ".";
                             }
                             throw new LlmApiException(options.Provider + " HTTP " + status + (string.IsNullOrEmpty(code) ? "" : " (" + code + ")") + ": " + advice +
-                                (string.IsNullOrEmpty(detail) ? "" : " Google: " + detail), !quota && !memory && (status == 429 || status >= 500), delay, status, code);
+                                (string.IsNullOrEmpty(detail) ? "" : " Máy chủ: " + detail), !quota && !memory && (status == 429 || status >= 500), delay, status, code);
                         }
                         return Parse(data, options.Provider);
                     }
@@ -123,6 +131,30 @@ namespace CountFile2.Services
                         advice = "Không thiết lập được HTTPS/TLS. Kiểm tra chứng chỉ, ngày giờ máy và proxy.";
                     throw new LlmApiException("Không kết nối được " + options.Provider + ". " + advice, true);
                 }
+            }
+        }
+        public async Task<string[]> ListOllamaModelsAsync(LlmExtractionOptions selected, CancellationToken token)
+        {
+            var options = new LlmExtractionOptions { LocalBaseUrl = selected.LocalBaseUrl, LocalApiKey = selected.LocalApiKey, AllowLanHttp = selected.AllowLanHttp };
+            string issue = options.ConfigurationIssue(); if (issue != null) throw new LlmApiException(issue);
+            using (var timeout = CancellationTokenSource.CreateLinkedTokenSource(token))
+            using (var message = new HttpRequestMessage(HttpMethod.Get, options.LocalBaseUrl.TrimEnd('/') + "/api/tags")) {
+                timeout.CancelAfter(TimeSpan.FromSeconds(15));
+                if (!string.IsNullOrWhiteSpace(options.LocalApiKey)) message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", options.LocalApiKey);
+                try {
+                    using (var response = await localClient.SendAsync(message, HttpCompletionOption.ResponseHeadersRead, timeout.Token).ConfigureAwait(false)) {
+                        string text = await ReadLimitedAsync(response.Content, timeout.Token).ConfigureAwait(false);
+                        if (!response.IsSuccessStatusCode) throw new LlmApiException("Không lấy được danh sách Ollama (HTTP " + (int)response.StatusCode + "). Kiểm tra URL gốc/quyền truy cập.");
+                        var data = PostOcrExtractionService.Serializer().Deserialize<Dictionary<string, object>>(text);
+                        if (data == null || !data.ContainsKey("models")) throw new LlmApiException("Endpoint không trả danh sách model Ollama hợp lệ.");
+                        return A(G(data, "models")).Where(m => string.IsNullOrEmpty(S(m, "remote_host")))
+                            .Select(m => S(m, "name")).Where(n => !string.IsNullOrWhiteSpace(n) && n.IndexOf("cloud", StringComparison.OrdinalIgnoreCase) < 0)
+                            .Distinct().OrderBy(n => n, StringComparer.OrdinalIgnoreCase).ToArray();
+                    }
+                } catch (OperationCanceledException) {
+                    token.ThrowIfCancellationRequested(); throw new LlmApiException("Ollama hết thời gian chờ. Khởi chạy Ollama rồi thử lại.");
+                } catch (HttpRequestException) { throw new LlmApiException("Không kết nối được Ollama. Khởi chạy Ollama và kiểm tra địa chỉ localhost:11434."); }
+                catch (ArgumentException) { throw new LlmApiException("Danh sách model Ollama không phải JSON hợp lệ."); }
             }
         }
         private static string ImageLabels(LlmRequest request)

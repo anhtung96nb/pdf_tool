@@ -1,6 +1,6 @@
 # Kế hoạch chuyển bóc tách thông tin sang Gemini API hoặc LLM local
 
-Ngày lập: 25/10/2026. Cập nhật triển khai: 26/10/2026. Đã thay bộ chọn trường cũ bằng LLM; kiểm tra model thực tế được để sau theo yêu cầu. Xem `post-ocr-metadata-excel.md` và `verify-llm-extraction.md` cho hành vi và giới hạn đã triển khai.
+Ngày lập: 25/10/2026. Cập nhật triển khai: 04/11/2026. Đã thay bộ chọn trường cũ bằng LLM; luồng hiện tại OCR → Markdown đã lưu → Ollama `qwen3.5:4b` → JSON/Excel. Xem [hướng dẫn](ollama-ocr-markdown.md) và [xác minh](verify-ollama-markdown.md). Ollama thật tại localhost:11434 chưa chạy; kiểm thử tích hợp dùng HTTP giả lập.
 
 ## 1. Mục tiêu đã chốt
 

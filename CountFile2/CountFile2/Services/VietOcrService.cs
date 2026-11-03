@@ -84,6 +84,7 @@ namespace CountFile2.Services
 
     public sealed class VietOcrService
     {
+        public Func<LlmExtractionService> LlmServiceFactory { get; set; } = () => new LlmExtractionService();
         internal static JavaScriptSerializer Serializer()
         { return new JavaScriptSerializer { MaxJsonLength = 32 * 1024 * 1024, RecursionLimit = 100 }; }
 
@@ -100,11 +101,11 @@ namespace CountFile2.Services
                 if ((File.GetAttributes(child) & FileAttributes.ReparsePoint) == 0)
                     foreach (string file in Scan(child, true, token)) yield return file;
         }
-        private static IList<VietOcrResult> Process(string input, string output, VietOcrOptions options,
+        private IList<VietOcrResult> Process(string input, string output, VietOcrOptions options,
             CancellationToken token, IProgress<VietOcrProgress> progress)
         {
             if (options == null) throw new ArgumentNullException("options");
-            if (!options.WriteText && !options.WriteMarkdown && !options.WriteJson) throw new ArgumentException("Chọn Markdown hoặc JSON.");
+            if (!options.WriteText && !options.WriteMarkdown && !options.WriteJson && !options.ExtractMetadata) throw new ArgumentException("Chọn Markdown hoặc JSON.");
             if (options.Dpi < 72 || options.Dpi > 600) throw new ArgumentException("DPI phải từ 72 đến 600.");
             if (!new[] { 0, 90, 180, 270 }.Contains(options.Rotation)) throw new ArgumentException("Góc xoay không hợp lệ.");
             if (options.TimeoutSeconds < 1) throw new ArgumentException("Thời gian chờ phải lớn hơn 0.");
@@ -136,7 +137,7 @@ namespace CountFile2.Services
                 string relative = folder ? file.Substring(root.Length) : Path.GetFileName(file);
                 string destination = Path.Combine(output, relative) + ".ocr";
                 var result = new VietOcrResult { InputPath = file, TextPath = options.WriteText ? destination + ".txt" : null,
-                    MarkdownPath = options.WriteMarkdown ? destination + ".md" : null,
+                    MarkdownPath = options.WriteMarkdown || options.ExtractMetadata ? destination + ".md" : null,
                     JsonPath = options.WriteJson ? destination + ".json" : null, Status = "Đang xử lý" };
                 bool ocrWritten = false;
                 try
@@ -160,7 +161,7 @@ namespace CountFile2.Services
                                 PostOcrExtractionService.Reextract(result.Extraction, previousExtraction.PrimaryStartPage, previousExtraction.PrimaryEndPage);
                             ExtractionReview.Preserve(previousExtraction, result.Extraction);
                             result.ExtractionPath = destination + ".metadata.json";
-                            using (var llm = new LlmExtractionService()) llm.ExtractAsync(result.Extraction, options.LlmOptions, token).GetAwaiter().GetResult();
+                            using (var llm = LlmServiceFactory()) llm.ExtractAsync(result.Extraction, options.LlmOptions, token).GetAwaiter().GetResult();
                             ExtractionExportService.SaveJson(result.ExtractionPath, new[] { result.Extraction });
                             result.Details += " LLM: " + result.Extraction.LlmStatus + ". " + result.Extraction.LlmError;
                         } catch (OperationCanceledException) { throw; }
@@ -199,7 +200,7 @@ namespace CountFile2.Services
         {
             var paths = new List<string>();
             if (options.WriteText) paths.Add(destination + ".txt");
-            if (options.WriteMarkdown) paths.Add(destination + ".md");
+            if (options.WriteMarkdown || options.ExtractMetadata) paths.Add(destination + ".md");
             if (options.WriteJson) paths.Add(destination + ".json");
             if (!options.Overwrite && paths.Any(File.Exists)) throw new IOException("Đầu ra đã tồn tại. Chọn Ghi đè hoặc thư mục khác.");
             Directory.CreateDirectory(Path.GetDirectoryName(destination));
@@ -213,7 +214,7 @@ namespace CountFile2.Services
             {
                 using (var pdf = PdfiumViewer.PdfDocument.Load(input))
                 using (TextWriter txt = options.WriteText ? new StreamWriter(Path.Combine(work, "text"), false, new UTF8Encoding(false)) : TextWriter.Null)
-                using (TextWriter markdown = options.WriteMarkdown ? new StreamWriter(Path.Combine(work, "markdown"), false, new UTF8Encoding(false)) : TextWriter.Null)
+                using (TextWriter markdown = options.WriteMarkdown || options.ExtractMetadata ? new StreamWriter(Path.Combine(work, "markdown"), false, new UTF8Encoding(false)) : TextWriter.Null)
                 using (TextWriter data = options.WriteJson ? new StreamWriter(Path.Combine(work, "json"), false, new UTF8Encoding(false)) : TextWriter.Null)
                 using (TextWriter review = reviewPath != null ? new StreamWriter(reviewPath, false, new UTF8Encoding(false)) : TextWriter.Null)
                 {

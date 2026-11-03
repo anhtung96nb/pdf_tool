@@ -68,7 +68,10 @@ namespace CountFile2.Services
             token.ThrowIfCancellationRequested();
             var root = Serializer().Deserialize<Dictionary<string, object>>(File.ReadAllText(path, Encoding.UTF8));
             if (root == null || !root.ContainsKey("pages")) throw new InvalidDataException("Chọn JSON OCR có pages (không phải JSON trích xuất).");
-            return Parse(root, Items(root["pages"]).Select(p => (IDictionary<string, object>)p).ToList(), path, token);
+            var doc = Parse(root, Items(root["pages"]).Select(p => (IDictionary<string, object>)p).ToList(), path, token);
+            string markdown = Path.ChangeExtension(path, ".md");
+            if (File.Exists(markdown)) LlmMarkdownInput.Attach(doc, markdown, token);
+            return doc;
         }
         public static AdministrativeDocument FromText(string path, string pdfPath, CancellationToken token)
         {
@@ -78,13 +81,18 @@ namespace CountFile2.Services
             var doc = new AdministrativeDocument { Source = pdfPath, RecordId = RecordId(pdfPath), Engine = "Văn bản thuần", PageCount = count,
                 PrimaryEndPage = count, Fingerprint = Fingerprint(pdfPath), OcrFingerprint = HashText(text), OcrSourcePath = Path.GetFullPath(path) };
             doc.SourceWarnings.Add("MD/TXT được ghép với PDF do người dùng chọn; thiếu bằng chứng tọa độ và dấu vân tay nguồn OCR. Cần đối chiếu.");
-            int page = 1, index = 0; bool markdown = Path.GetExtension(path).Equals(".md", StringComparison.OrdinalIgnoreCase);
+            if (Path.GetExtension(path).Equals(".md", StringComparison.OrdinalIgnoreCase)) {
+                LlmMarkdownInput.Attach(doc, path, token);
+                for (int p = 1; p <= count; p++) doc.Pages.Add(new OcrPageMetadata { Page = p, NumberStatus = "disabled", OcrStatus = "text_only" });
+                ExtractionMetadata.Initialize(doc); return doc;
+            }
+            int page = 1, index = 0;
             foreach (string raw in text.Split('\n')) {
                 token.ThrowIfCancellationRequested();
                 var marker = System.Text.RegularExpressions.Regex.Match(raw, @"^(?:##\s*|=====\s*)Trang\s+(\d+)\s*/", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 if (marker.Success) { page = int.Parse(marker.Groups[1].Value); if (page < 1 || page > count) throw new InvalidDataException("Trang trong MD/TXT vượt PDF đã chọn."); continue; }
-                if (string.IsNullOrWhiteSpace(raw) || markdown && (raw.StartsWith("# ") || raw.StartsWith("**Trạng thái:") || raw.StartsWith("**Số trang ghi tay:") || raw.StartsWith("Tổng số trang:") || raw.Trim() == "---")) continue;
-                string value = markdown ? System.Text.RegularExpressions.Regex.Replace(raw.Trim(), @"\\([\p{P}\p{S}])", "$1") : raw.Trim();
+                if (string.IsNullOrWhiteSpace(raw)) continue;
+                string value = raw.Trim();
                 doc.Lines.Add(new EvidenceLine { Id = page + ":text:" + (++index), Page = page, RawText = raw, Text = Normalize(value), HasGeometry = false, Method = "MD/TXT", Confidence = 0 });
             }
             for (int p = 1; p <= count; p++) doc.Pages.Add(new OcrPageMetadata { Page = p, NumberStatus = "disabled", OcrStatus = "text_only" });
@@ -104,6 +112,7 @@ namespace CountFile2.Services
                     doc = Parse(header, pages, result.JsonPath, token);
                 }
             } else doc = FromJson(result.JsonPath, token);
+            if (result.MarkdownPath != null) LlmMarkdownInput.Attach(doc, result.MarkdownPath, token);
             doc.LinkedOcrResult = result;
             ExtractionReview.Preserve(result.Extraction, doc); result.Extraction = doc;
             return doc;

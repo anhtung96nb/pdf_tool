@@ -11,12 +11,13 @@ namespace CountFile2.Services
     public sealed class LlmExtractionOptions
     {
         public string Provider { get; set; } = "Ollama";
-        public string Model { get; set; } = "";
+        public string Model { get; set; } = "qwen3.5:4b";
         public string LocalBaseUrl { get; set; } = "http://localhost:11434";
         [ScriptIgnore] public string GeminiApiKey { get; set; }
         [ScriptIgnore] public string LocalApiKey { get; set; }
         public string ImageMode { get; set; } = "TextOnly";
         public bool SupportsVision { get; set; }
+        public bool OllamaThink { get; set; }
         public bool AllowLanHttp { get; set; }
         public int ContextTokens { get; set; } = 16384;
         public int OutputTokens { get; set; } = 4096;
@@ -35,6 +36,7 @@ namespace CountFile2.Services
                 Uri uri;
                 if (!Uri.TryCreate(LocalBaseUrl, UriKind.Absolute, out uri) || !string.IsNullOrEmpty(uri.UserInfo) || !string.IsNullOrEmpty(uri.Query) || !string.IsNullOrEmpty(uri.Fragment)) return "Endpoint local phải là URL không chứa credential/query/fragment.";
                 if (uri.Scheme != "https" && !(uri.Scheme == "http" && (uri.IsLoopback || AllowLanHttp))) return "Endpoint cần HTTPS; HTTP chỉ dành cho localhost hoặc mạng nội bộ được bật rõ ràng.";
+                if (Provider == "Ollama" && (uri.AbsolutePath.TrimEnd('/').EndsWith("/api", StringComparison.OrdinalIgnoreCase) || uri.AbsolutePath.TrimEnd('/').EndsWith("/v1", StringComparison.OrdinalIgnoreCase))) return "Địa chỉ Ollama là URL gốc, ví dụ http://localhost:11434 (không thêm /api hoặc /v1).";
             }
             if (!new[] { "TextOnly", "ImagesOnDemand", "Pdf" }.Contains(ImageMode)) return "Chế độ đầu vào LLM không hợp lệ.";
             if (ImageMode != "TextOnly" && !SupportsVision) return "Chọn model có vision và bật khả năng đọc ảnh; hoặc dùng Chỉ nội dung OCR.";

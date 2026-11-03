@@ -1,0 +1,7 @@
+# Local Python environments
+.paddleocr-venv/
+.vietocr-venv/
+.venv/
+venv/
+__pycache__/
+*.py[cod]

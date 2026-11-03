@@ -59,7 +59,7 @@ class LlmExtractionTests
         public int Calls; public string Url, Body; public Dictionary<string, string> Headers; public Func<string, HttpResponseMessage> Response;
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) {
             Calls++;
-            Url = request.RequestUri.AbsoluteUri; Headers = request.Headers.ToDictionary(h => h.Key, h => string.Join(",", h.Value)); Body = await request.Content.ReadAsStringAsync();
+            Url = request.RequestUri.AbsoluteUri; Headers = request.Headers.ToDictionary(h => h.Key, h => string.Join(",", h.Value)); Body = request.Content == null ? "" : await request.Content.ReadAsStringAsync();
             return Response(Body);
         }
     }
@@ -147,6 +147,8 @@ class LlmExtractionTests
         Check(!File.ReadAllText(settingsPath).Contains("FAKE-") && restored.GeminiApiKey == settings.GeminiApiKey && restored.LocalApiKey == settings.LocalApiKey, "DPAPI settings preserve keys without plaintext");
         Check(!json.Serialize(settings).Contains("FAKE-"), "keys excluded from options JSON");
         TransportTests(settings);
+        MarkdownTests();
+        OllamaModelTests();
         string report = Path.Combine(root, "report.xlsx"); ExtractionExportService.SaveExcel(report, new[] { d, noConfig, multi });
         using (var workbook = new ExcelPackage(new FileInfo(report))) {
             var sheet = workbook.Workbook.Worksheets["Báo cáo"];
@@ -178,7 +180,7 @@ class LlmExtractionTests
         var plainInput = PostOcrExtractionService.FromText(plainPath, d.Source, CancellationToken.None);
         Check(!plainInput.SourceVerified && plainInput.Lines.All(l => !l.HasGeometry) && F(plainInput, "Số văn bản").Value == null, "text adapter never fabricates geometry or rule-selected data");
         using (var form = new frmTrichXuatVanBan()) {
-            form.LlmOptions = new LlmExtractionOptions(); form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-30000, -30000); form.Show(); SynchronizationContext.SetSynchronizationContext(new WindowsFormsSynchronizationContext());
+            form.LlmOptions = new LlmExtractionOptions { Model = "" }; form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-30000, -30000); form.Show(); SynchronizationContext.SetSynchronizationContext(new WindowsFormsSynchronizationContext());
             Pump(form.RunOcrImportAsync(jsonInput, false, Path.Combine(root, "ui-results.json")));
             var records = (List<AdministrativeDocument>)typeof(frmTrichXuatVanBan).GetField("results", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
             Check(records.Count == 1 && records[0].LlmStatus == "not_configured" && F(records[0], "Cơ quan ban hành").Value == null, "UI imports OCR, waits for model, no legacy fallback");
@@ -207,7 +209,7 @@ class LlmExtractionTests
     }
     static void OcrIntegration(string[] args) {
         var input = Doc("ocr-input", 2);
-        var options = new VietOcrOptions { PythonPath = args[1], WorkerPath = args[2], WriteMarkdown = true, WriteJson = false, ExtractMetadata = true, LlmOptions = new LlmExtractionOptions() };
+        var options = new VietOcrOptions { PythonPath = args[1], WorkerPath = args[2], WriteMarkdown = true, WriteJson = false, ExtractMetadata = true, LlmOptions = new LlmExtractionOptions { Model = "" } };
         var result = new VietOcrService().ProcessAsync(input.Source, Path.Combine(root, "ocr-output"), options, CancellationToken.None).GetAwaiter().GetResult()[0];
         Check(result.CompletedPages == 2 && File.Exists(result.MarkdownPath) && File.Exists(result.ExtractionPath) && result.Extraction.LlmStatus == "not_configured", "automatic after-OCR persists content when model unconfigured");
         var stored = ExtractionExportService.LoadJson(result.ExtractionPath); ExtractionReview.Update(stored[0], F(stored[0], "Người ký"), "Bản sửa giữ lại", true);
@@ -222,6 +224,83 @@ class LlmExtractionTests
         }
         File.AppendAllText(input.Source, "\n%changed"); PostOcrExtractionService.ValidateCurrentSource(input);
         Check(!input.SourceVerified && input.Warnings.Any(w => w.StartsWith("Nguồn thay đổi")), "changed PDF invalidates source before sending vision");
+        var pipelineSource = Doc("ollama-pipeline", 2); options.Overwrite = false; options.WriteMarkdown = false; options.WriteJson = true; options.LlmOptions = Options();
+        var handler = new Handler { Response = body => {
+            string path = Path.Combine(root, "ollama-output", Path.GetFileName(pipelineSource.Source) + ".ocr.md");
+            Check(File.Exists(path) && File.ReadAllText(path).Contains("Nội dung tiếng Việt trang 2"), "Markdown committed before Ollama request");
+            var requestBody = json.Deserialize<Dictionary<string, object>>(body);
+            var messages = ((System.Collections.IEnumerable)requestBody["messages"]).Cast<Dictionary<string, object>>().ToArray();
+            string text = (string)messages[1]["content"];
+            Check(text.Contains("# Nội dung OCR") && text.Contains("[1:1] Nội dung tiếng Việt trang 1") && !text.Contains("\"text\":"), "real OCR pipeline sends annotated Markdown to native Ollama");
+            var reply = Reply(2); reply.fields = new[] { Field("subject", "Nội dung tiếng Việt trang 1", "Nội dung tiếng Việt trang 1", "1:1", null) };
+            return HttpJson(new { model = "qwen3.5:4b", done = true, done_reason = "stop", message = new { content = Json(reply) } });
+        } };
+        using (var provider = new HttpLlmExtractionProvider(handler)) {
+            var service = new VietOcrService { LlmServiceFactory = () => new LlmExtractionService(provider) };
+            var completed = service.ProcessAsync(pipelineSource.Source, Path.Combine(root, "ollama-output"), options, CancellationToken.None).GetAwaiter().GetResult()[0];
+            Check(completed.Extraction.LlmStatus == "completed" && completed.MarkdownPath != null && completed.Extraction.MarkdownPath == completed.MarkdownPath && F(completed.Extraction, "Trích yếu").Value == "Nội dung tiếng Việt trang 1", "PDF to saved Markdown to Ollama to validated metadata");
+            string excel = Path.Combine(root, "ollama-pipeline.xlsx"); ExtractionExportService.SaveExcel(excel, new[] { completed.Extraction });
+            using (var workbook = new ExcelPackage(new FileInfo(excel))) Check(workbook.Workbook.Worksheets["Báo cáo"].Dimension.End.Row == 2 && workbook.Workbook.Worksheets.Count == 5, "pipeline exports five sheets and one PDF row");
+            completed.Dispose();
+        }
+    }
+    static void MarkdownTests() {
+        var doc = Doc("markdown-source", 2); string path = doc.Source + ".ocr.md";
+        var content = new StringBuilder("# OCR: Scan2026-03-10.pdf\n\nTổng số trang: 2\n\n");
+        foreach (var page in doc.Lines.GroupBy(l => l.Page)) {
+            content.Append("## Trang " + page.Key + " / 2\n\n**Trạng thái:** Cần kiểm tra\n\n**Số trang ghi tay:** 003\n\n");
+            foreach (var line in page) content.AppendLine(line.RawText.Replace("-", "\\-") + "  ");
+        }
+        File.WriteAllText(path, content.ToString(), new UTF8Encoding(false)); doc.MarkdownPath = path;
+        var options = Options(); options.UseCache = true;
+        var fake = new Fake { Respond = (q, n) => {
+            Check(q.Text.Contains("[l1] Số: 003/QĐ\\-SNV") && !q.Text.Contains("Scan2026-03-10") && !q.Text.Contains("Cần kiểm tra"), "Markdown content carries IDs and omits export metadata/filename");
+            Check(!q.Instructions.Contains("Nguyễn Văn An") && q.Instructions.Contains("người xác nhận"), "prompt has form-role guidance without sample names or dates");
+            return Json(Reply(2));
+        } };
+        Extract(doc, options, fake);
+        Check(doc.LlmStatus == "completed" && doc.Lines.Count == 8 && doc.Lines.All(l => l.HasGeometry) && F(doc, "Số, ký hiệu").Value == "003/QĐ-SNV", "escaped Markdown maps back to original geometry and literal values");
+        Extract(doc, options, fake); Check(fake.Calls == 1, "unchanged saved Markdown reuses validated cache");
+        ExtractionReview.Update(doc, F(doc, "Cơ quan ban hành"), "SỞ NỘI VỤ", true);
+        File.WriteAllText(path, content.ToString().Replace("SỞ NỘI VỤ", "CƠ QUAN A &amp; B\\_1"), new UTF8Encoding(false));
+        var changed = new Fake { Respond = (q, n) => {
+            var response = Reply(2); response.fields = new[] { Field("issuer", "CƠ QUAN A & B_1", "CƠ QUAN A & B_1", q.AllowedEvidenceIds.First(id => id.Contains(":md:")), null) }; return Json(response);
+        } };
+        Extract(doc, options, changed);
+        Check(changed.Calls == 1 && doc.LlmStatus == "completed" && !F(doc, "Cơ quan ban hành").Confirmed && doc.Lines.Any(l => l.RawText == "CƠ QUAN A & B_1" && !l.HasGeometry), "changed Markdown invalidates cache/confirmation and never reuses a different text box");
+        options.UseCache = false;
+        var modifiedDuringCall = new Fake { Respond = (q, n) => { File.AppendAllText(path, "\nThêm nội dung\n"); var reply = Reply(2); reply.fields = new LlmFieldData[0]; return Json(reply); } };
+        Extract(doc, options, modifiedDuringCall);
+        Check(doc.LlmStatus == "failed" && doc.LlmError.Contains("Markdown thay đổi"), "Markdown changed during inference cannot produce a completed result");
+        File.Delete(path); var unavailable = new Fake { Respond = (q, n) => Json(Reply(2)) }; Extract(doc, options, unavailable);
+        Check(doc.LlmStatus == "failed" && unavailable.Calls == 0, "missing intermediate Markdown cannot silently use stale OCR text");
+        string invalid = Path.Combine(root, "invalid-page.md"); File.WriteAllText(invalid, "## Trang 3 / 2\nSai trang\n");
+        bool rejected = false; try { PostOcrExtractionService.FromText(invalid, doc.Source, CancellationToken.None); } catch (InvalidDataException) { rejected = true; }
+        Check(rejected, "Markdown page markers must agree with the source PDF");
+    }
+    static void OllamaModelTests() {
+        var options = new LlmExtractionOptions();
+        Check(options.Provider == "Ollama" && options.Model == "qwen3.5:4b" && options.ImageMode == "TextOnly" && !options.OllamaThink, "default workflow uses local qwen3.5:4b Markdown without thinking");
+        var handler = new Handler { Response = s => HttpJson(new { models = new[] { new { name = "qwen3.5:4b", remote_host = "" }, new { name = "remote:cloud", remote_host = "" }, new { name = "remote-model", remote_host = "https://example.invalid" } } }) };
+        options.GeminiApiKey = "FAKE-CLOUD-KEY";
+        using (var provider = new HttpLlmExtractionProvider(handler)) {
+            string[] models = provider.ListOllamaModelsAsync(options, CancellationToken.None).GetAwaiter().GetResult();
+            Check(handler.Url == "http://localhost:11434/api/tags" && models.SequenceEqual(new[] { "qwen3.5:4b" }) && !handler.Headers.ContainsKey("x-goog-api-key"), "Ollama discovery uses native local API and excludes cloud models");
+        }
+        handler = new Handler { Response = s => HttpJson(new { model = "qwen3.5:4b", done = true, done_reason = "stop", message = new { content = "{}" } }) };
+        using (var provider = new HttpLlmExtractionProvider(handler)) {
+            provider.GenerateAsync(new LlmRequest { Text = "# Markdown", Instructions = "JSON", Schema = LlmExtractionService.Schema() }, options, CancellationToken.None).GetAwaiter().GetResult();
+            var body = json.Deserialize<Dictionary<string, object>>(handler.Body);
+            Check(Equals(body["think"], false) && Equals(body["stream"], false) && body["format"] is Dictionary<string, object>, "Qwen Ollama call disables thinking and requires the JSON schema");
+        }
+        using (var form = new LlmSettingsForm(options)) {
+            var modelHandler = new Handler { Response = s => HttpJson(new { models = new[] { new { name = "qwen3.5:4b" } } }) };
+            form.ConnectionFactory = () => new HttpLlmExtractionProvider(modelHandler); Pump(form.LoadOllamaModelsAsync());
+            var combo = (ComboBox)typeof(LlmSettingsForm).GetField("model", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+            Check(combo.Items.Count == 1 && combo.Text == "qwen3.5:4b", "settings loads installed Ollama tags and retains the selected model");
+        }
+        options.LocalBaseUrl = "http://localhost:11434/v1";
+        Check(options.ConfigurationIssue() != null, "native Ollama settings reject OpenAI-style endpoint suffix");
     }
     static void TransportTests(LlmExtractionOptions keys) {
         string output = Json(Reply(2)); var request = new LlmRequest { Text = "fixture", Instructions = "schema", Schema = LlmExtractionService.Schema() };
