@@ -47,14 +47,10 @@ namespace CountFile2
         private readonly NumericUpDown numberTop = new NumericUpDown { Minimum = 1, Maximum = 100, Value = 10, Width = 55, AccessibleName = "Chiều cao vùng số phía trên (%)" };
         private readonly VietOcrPageNumberPanel numberPanel;
         private CancellationTokenSource cancellation;
-        private readonly bool paddle;
         public IList<VietOcrResult> Results { get { return results.AsReadOnly(); } }
 
-        public frmVietOCR() : this(false) { }
-
-        protected frmVietOCR(bool usePaddle)
+        public frmVietOCR()
         {
-            paddle = usePaddle;
             Text = "Việt OCR"; Name = "frmVietOCR"; ClientSize = new Size(1100, 750);
             Font = new Font("Segoe UI", 9); AutoScaleMode = AutoScaleMode.Font;
             format.Items.AddRange(new object[] { "Markdown + JSON", "Markdown (.md)", "JSON (.json)" }); format.SelectedIndex = 0;
@@ -70,7 +66,6 @@ namespace CountFile2
             AddRow(Label("DPI:"), dpi, Label("Thiết bị:"), device, Label("Xoay trang:"), rotation, Label("Chờ/trang (giây):"), timeout);
             numberPanel = new VietOcrPageNumberPanel(ReadOptions);
             var numberTab = new TabPage("Số trang ghi tay"); numberTab.Controls.Add(numberPanel);
-            if (!paddle)
             {
                 var showRegion = new Button { Text = "Xem vùng số", AutoSize = true };
                 AddRow(readNumbers, Label("Bên phải (%):"), numberRight, Label("Phía trên (%):"), numberTop, showRegion);
@@ -93,11 +88,9 @@ namespace CountFile2
             var ocrTab = new TabPage("Kết quả OCR"); ocrTab.Controls.Add(split); resultTabs.TabPages.Add(ocrTab);
             var previewTabs = new TabControl { Dock = DockStyle.Fill };
             var textTab = new TabPage("Toàn văn"); textTab.Controls.Add(previewPanel); previewTabs.TabPages.Add(textTab);
-            if (!paddle)
             {
                 previewTabs.TabPages.Add(numberTab);
             }
-            else { numberPanel.Dispose(); numberTab.Dispose(); }
             metadataForm = new frmTrichXuatVanBan { TopLevel = false, FormBorderStyle = FormBorderStyle.None, Dock = DockStyle.Fill };
             metadataTab = new TabPage("Thông tin / Excel"); metadataTab.Controls.Add(metadataForm); resultTabs.TabPages.Add(metadataTab); metadataForm.Show();
             split.Panel2.Controls.Add(previewTabs);
@@ -117,29 +110,19 @@ namespace CountFile2
             previewFormat.SelectedIndexChanged += (s, e) => ShowResult();
             DocumentJobCoordinator.Shared.Changed += JobChanged;
             FormClosing += (s, e) => { if (cancellation != null) { e.Cancel = true; cancellation.Cancel(); } };
-            if (paddle)
-            {
-                Text = "PaddleOCR — Tiếng Việt"; Name = "frmPaddleOCR";
-                python.Text = PaddleOcrDefaults.FindPython(); python.AccessibleName = "Python thực thi PaddleOCR";
-                format.SelectedIndex = 2; previewFormat.SelectedIndex = 1;
-                foreach (Control row in settings.Controls)
-                    foreach (Control c in row.Controls)
-                        if (c is Label) c.Text = c.Text.Replace("viet-ocr", "paddle-ocr");
-                AddRow(Label("PP-OCRv5 • Tiếng Việt (vi) • latin_PP-OCRv5_mobile_rec. Dòng có điểm < 0,8 cần kiểm tra dấu."));
-            }
             JobChanged(this, EventArgs.Empty);
         }
 
         private static Label Label(string text) { return new Label { Text = text, AutoSize = true, Padding = new Padding(0, 5, 0, 0) }; }
         private VietOcrOptions ReadOptions()
         {
-            return new VietOcrOptions { EngineName = paddle ? "PaddleOCR" : "VietOCR", OutputFolderName = paddle ? "paddle-ocr" : "viet-ocr",
-                SetupPath = paddle ? "PaddleOcr/setup.ps1" : "VietOcr/setup.ps1",
-                WorkerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, paddle ? "PaddleOcr" : "VietOcr", "worker.py"),
+            return new VietOcrOptions { EngineName = "VietOCR", OutputFolderName = "viet-ocr",
+                SetupPath = "VietOcr/setup.ps1",
+                WorkerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VietOcr", "worker.py"),
                 PythonPath = python.Text.Trim(), Dpi = (int)dpi.Value, Rotation = rotation.SelectedIndex * 90,
                 Device = device.SelectedIndex == 0 ? "cpu" : "cuda:0", TimeoutSeconds = (int)timeout.Value,
                 WriteText = false, WriteMarkdown = format.SelectedIndex != 2 || extractMetadata.Checked, WriteJson = format.SelectedIndex != 1,
-                Recursive = recursive.Checked, Overwrite = overwrite.Checked, ReadPageNumbers = !paddle && readNumbers.Checked,
+                Recursive = recursive.Checked, Overwrite = overwrite.Checked, ReadPageNumbers = readNumbers.Checked,
                 ExtractMetadata = extractMetadata.Checked,
                 LlmOptions = metadataForm.LlmOptions.Copy(),
                 NumberRightPercent = (int)numberRight.Value, NumberTopPercent = (int)numberTop.Value };
@@ -161,7 +144,7 @@ namespace CountFile2
             foreach (Control row in settings.Controls)
                 foreach (Control c in row.Controls) c.Enabled = !DocumentJobCoordinator.Shared.IsBusy;
             cancel.Enabled = cancellation != null;
-            if (!paddle) files.Enabled = !DocumentJobCoordinator.Shared.IsBusy;
+            files.Enabled = !DocumentJobCoordinator.Shared.IsBusy;
         }
         private void RefreshFiles() { files.DataSource = new BindingList<VietOcrResult>(results.ToList()); }
         private VietOcrResult Selected { get { return files.CurrentRow == null ? null : files.CurrentRow.DataBoundItem as VietOcrResult; } }
@@ -169,7 +152,7 @@ namespace CountFile2
         private void ShowResult()
         {
             var r = Selected; preview.Clear();
-            if (!paddle) numberPanel.SetDocument(r != null && r.Status != "Lỗi" && r.Status != "Đã hủy" ? r : null);
+            numberPanel.SetDocument(r != null && r.Status != "Lỗi" && r.Status != "Đã hủy" ? r : null);
             details.Text = r == null ? "" : r.Details;
             string path = SelectedPath;
             if (path == null) { preview.Text = "Chưa có file ở định dạng đang chọn."; return; }
@@ -201,7 +184,7 @@ namespace CountFile2
         {
             if (DocumentJobCoordinator.Shared.IsBusy) { status.Text = "Đang có tác vụ: " + DocumentJobCoordinator.Shared.ActiveJob; return; }
             cancellation = new CancellationTokenSource();
-            if (!DocumentJobCoordinator.Shared.TryBegin(paddle ? "PaddleOCR" : "Việt OCR", cancellation)) { cancellation.Dispose(); cancellation = null; return; }
+            if (!DocumentJobCoordinator.Shared.TryBegin("Việt OCR", cancellation)) { cancellation.Dispose(); cancellation = null; return; }
             previewFormat.SelectedIndex = options != null && !options.WriteMarkdown && !options.WriteText ? 1 : 0;
             foreach (var old in results) old.Dispose(); results.Clear(); RefreshFiles(); progress.Value = 0; progress.Style = ProgressBarStyle.Marquee;
             bool accept = true;
@@ -230,7 +213,7 @@ namespace CountFile2
                 accept = false; progress.Style = ProgressBarStyle.Continuous;
                 var completed = cancellation; cancellation = null;
                 DocumentJobCoordinator.Shared.End(completed); completed.Dispose();
-                if (!paddle) await numberPanel.RefreshEvidenceAsync();
+                await numberPanel.RefreshEvidenceAsync();
                 if (options != null && options.ExtractMetadata && !IsDisposed) await metadataForm.LoadOcrResultsAsync(results);
             }
         }

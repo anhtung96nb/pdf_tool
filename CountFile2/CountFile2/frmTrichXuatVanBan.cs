@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -54,7 +54,7 @@ namespace CountFile2
         {
             Text = "Trích xuất văn bản PDF"; Name = "frmTrichXuatVanBan"; ClientSize = new Size(1100, 720); Font = new Font("Segoe UI", 9);
             sourceMode.Items.AddRange(new object[] { "PDF / lớp chữ", "JSON sau OCR" }); sourceMode.SelectedIndex = 1;
-            engineFilter.Items.AddRange(new object[] { "VietOCR", "PaddleOCR", "Tất cả" }); engineFilter.SelectedIndex = 0;
+            engineFilter.Items.AddRange(new object[] { "VietOCR", "Tất cả" }); engineFilter.SelectedIndex = 0;
             AddButton("Chọn PDF", () => { using (var dialog = new OpenFileDialog { Filter = "PDF|*.pdf" }) if (dialog.ShowDialog(this) == DialogResult.OK) { source.Text = dialog.FileName; sourceMode.SelectedIndex = 0; } });
             AddButton("Chọn JSON OCR", () => { using (var dialog = new OpenFileDialog { Filter = "JSON OCR|*.ocr.json|JSON|*.json" }) if (dialog.ShowDialog(this) == DialogResult.OK) { source.Text = dialog.FileName; sourceMode.SelectedIndex = 1; } });
             AddButton("Nhập MD/TXT", ImportPlainText);

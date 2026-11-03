@@ -1,6 +1,6 @@
 # Trích xuất văn bản PDF bằng LLM
 
-Cập nhật 04/11/2026: mặc định OCR → Markdown → Ollama `qwen3.5:4b`; [khởi chạy và sử dụng](../../ollama-ocr-markdown.md). Bộ bóc tách theo quy tắc cũ đã bị gỡ theo yêu cầu. Màn hình được dùng trong **Thông tin / Excel** của Việt OCR/PaddleOCR và có thể mở độc lập.
+Cập nhật 04/11/2026: mặc định OCR → Markdown → Ollama `qwen3.5:4b`; [khởi chạy và sử dụng](../../ollama-ocr-markdown.md). Bộ bóc tách theo quy tắc cũ đã bị gỡ theo yêu cầu. Màn hình được dùng trong **Thông tin / Excel** của Việt OCR và có thể mở độc lập.
 
 Hướng dẫn đầy đủ: [Bóc tách sau OCR và Excel](../../post-ocr-metadata-excel.md). Kết quả kiểm thử hiện tại: [Xác minh LLM](../../verify-llm-extraction.md).
 
@@ -33,4 +33,4 @@ Hướng dẫn đầy đủ: [Bóc tách sau OCR và Excel](../../post-ocr-metad
 
 Hai script `Run-ExtractionTests.ps1` và `Run-PostOcrExtractionTests.ps1` cũ chuyển tới suite LLM mới. Các kiểm thử chọn trường theo quy tắc đã được xóa. Kết quả lịch sử 37/51 assertions chỉ áp dụng cho bản cũ và không chứng minh chất lượng bản LLM.
 
-Chưa cài model local và chưa gửi tài liệu thật. Ngày 26/10/2026 đã kiểm tra Gemini bằng JSON mẫu theo yêu cầu: metadata model trả HTTP 200, sinh nội dung gặp 503/quá tải hoặc timeout; xem `verify-gemini-connection.md`. API giả lập xác minh hành vi chương trình; độ chính xác model, vision, context thực tế và tài nguyên local cần được kiểm tra sau trên tài liệu đã gán nhãn. Phần OCR vẫn cần PDFium/Tesseract và môi trường VietOCR/PaddleOCR như trước.
+Chưa cài model local và chưa gửi tài liệu thật. Ngày 26/10/2026 đã kiểm tra Gemini bằng JSON mẫu theo yêu cầu: metadata model trả HTTP 200, sinh nội dung gặp 503/quá tải hoặc timeout; xem `verify-gemini-connection.md`. API giả lập xác minh hành vi chương trình; độ chính xác model, vision, context thực tế và tài nguyên local cần được kiểm tra sau trên tài liệu đã gán nhãn. Phần OCR vẫn cần PDFium/Tesseract và môi trường VietOCR như trước.

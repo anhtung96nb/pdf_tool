@@ -145,8 +145,4 @@ D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\vgg_seq2se
 D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\config.yaml
 D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\manifest.json
 D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\models\runtime-versions.txt
-D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\worker.py
-D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\requirements.txt
-D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\setup.ps1
-D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\PaddleOcr\README.md
 D:\Tungdv96\CountFile2\CountFile2\CountFile2\bin\Debug\VietOcr\page_number.py

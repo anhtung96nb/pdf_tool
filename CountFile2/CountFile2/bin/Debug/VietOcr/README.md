@@ -25,7 +25,7 @@ File hỏng không làm dừng cả lô. Lỗi ở một trang được ghi tron
 
 ## Số trang viết tay ở góc trên bên phải
 
-- Trên màn hình Việt OCR, **Đọc số trang viết tay** được bật sẵn. Có thể tắt nếu tài liệu không có số ghi tay. Tính năng này không bật cho màn hình PaddleOCR.
+- Trên màn hình Việt OCR, **Đọc số trang viết tay** được bật sẵn. Có thể tắt nếu tài liệu không có số ghi tay.
 - Vùng mặc định là **20% chiều rộng bên phải × 10% chiều cao phía trên** của trang đã xoay đúng chiều đọc. Thay hai tỷ lệ 1–100% theo tài liệu và dùng **Xem vùng số** để kiểm tra trước khi OCR. Với thư mục, chọn một PDF trong bảng kết quả để xem vùng.
 - Đây là một bước nhỏ trong **cùng yêu cầu OCR mỗi trang**, dùng lại ảnh render và model đã nạp. Cắt vùng số từ ảnh gốc, tìm cụm nét và đọc bằng VietOCR; không chạy lại toàn bộ PDF hoặc tải model khác.
 - Nhãn chỉ gồm chữ số `0–9`, lưu dạng chuỗi để giữ `003`. Không tự đổi `O` thành `0`, ghép các nhóm số cách rời hoặc suy ra nhãn từ thứ tự PDF.
